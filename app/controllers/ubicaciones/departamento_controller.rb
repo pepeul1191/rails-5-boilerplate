@@ -13,6 +13,7 @@ class Ubicaciones::DepartamentoController < ApplicationController
 					e.message
 				]
 			}.to_json
+			status = 500
 		end
 		render :plain => rpta, :status => status
 	end

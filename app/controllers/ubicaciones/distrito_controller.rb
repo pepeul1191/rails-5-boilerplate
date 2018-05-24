@@ -13,6 +13,7 @@ class Ubicaciones::DistritoController < ApplicationController
 					e.message
 				]
 			}.to_json
+			status = 500
 		end
 		render :plain => rpta, :status => status
 	end
@@ -30,6 +31,7 @@ class Ubicaciones::DistritoController < ApplicationController
 					e.message
 				]
 			}.to_json
+			status = 500
 		end
 		render :plain => rpta, :status => status
 	end
