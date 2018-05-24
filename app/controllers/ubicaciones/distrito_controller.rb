@@ -35,4 +35,23 @@ class Ubicaciones::DistritoController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def nombre
+		rpta = nil
+		status = 200
+		begin
+			temp = DistritoProvinciaDepartamento.select(:nombre).where(:id => params[:distrito_id]).first
+			rpta = temp.nombre
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en buscar coincidencias en los nombres de los distritos',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end
