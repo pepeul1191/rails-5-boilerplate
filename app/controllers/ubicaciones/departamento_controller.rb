@@ -9,7 +9,7 @@ class Ubicaciones::DepartamentoController < ApplicationController
 			rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error en guardar la tabla de modulos',
+					'Se ha producido un error en guardar la tabla de departamentos',
 					e.message
 				]
 			}.to_json
