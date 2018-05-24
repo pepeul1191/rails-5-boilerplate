@@ -1,3 +1,11 @@
+## Rails 5.2 Boilerplate
+
+### Instalar Dependencias
+
+    $ bundler install
+    $ bower install
+    $ npm install
+
 ### Migraciones
 
 Ejecutar migración
@@ -38,3 +46,10 @@ Tipos de Datos de Columnas
 + :float=>Float
 + :decimal=>BigDecimal
 + :blob=>Sequel::SQL::Blob
+
+---
+
+Fuentes:
+
++ https://github.com/pepeul1191/rails-pp-mono
++ https://github.com/pepeul1191/ruby-gestion.git
