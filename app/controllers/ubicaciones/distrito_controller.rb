@@ -40,7 +40,7 @@ class Ubicaciones::DistritoController < ApplicationController
 		rpta = nil
 		status = 200
 		begin
-			temp = DistritoProvinciaDepartamento.select(:nombre).where(:id => params[:distrito_id]).first
+			temp = Ubicaciones::DistritoProvinciaDepartamento.select(:nombre).where(:id => params[:distrito_id]).first
 			rpta = temp.nombre
 		rescue Exception => e
 			rpta = {
