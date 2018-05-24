@@ -62,6 +62,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gemas propias
-
 gem 'sequel'
 gem 'sqlite3'
