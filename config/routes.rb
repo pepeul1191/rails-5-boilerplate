@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
   get 'ubicaciones/provincia/listar/:departamento_id' => 'ubicaciones/provincia#listar'
   get 'ubicaciones/distrito/listar/:provincia_id' => 'ubicaciones/distrito#listar'
+  get 'ubicaciones/distrito/buscar' => 'ubicaciones/distrito#buscar'
 end
