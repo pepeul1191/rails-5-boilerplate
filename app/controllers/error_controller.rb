@@ -46,14 +46,6 @@ class ErrorController < ApplicationController
         :icono => 'fa fa-exclamation-triangle'
       }
     end
-    """
-    @body_error = true
-    @css = 'dist/login.min.css'
-		@js_top = 'http://localhost:3000/'
-		@js_bottom = 'dist/login.min.js'
-    @datos = error
-    render 'access'
-    """
     @locals = {
       :title => 'Error',
       :hola => 'mundo',
