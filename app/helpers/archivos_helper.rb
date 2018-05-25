@@ -35,6 +35,7 @@ module ArchivosHelper
         'models/archivos/autor',
         'models/archivos/categoria',
         'models/archivos/libro',
+        'models/archivos/archivo',
         'collections/archivos/extension_collection',
         'collections/archivos/autor_collection',
         'collections/archivos/categoria_collection',
