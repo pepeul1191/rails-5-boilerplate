@@ -6,11 +6,14 @@
     <%= csp_meta_tag %>
     <link rel="shortcut icon" href="<%=CONSTANTS[:BASE_URL]%>favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title><%=@locals[:title]%></title>
+    <%= load_css %>
   </head>
   <body>
+    <%=@locals[:hola]%>
     <h1>Header</h1>
     <%= yield %>
     <h2>Footer</h2>
+    <%= load_js %>
   </body>
 </html>
