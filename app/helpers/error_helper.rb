@@ -5,7 +5,8 @@ module ErrorHelper
       rpta = [
         'bower_components/bootstrap/dist/css/bootstrap.min',
         'bower_components/font-awesome/css/font-awesome.min',
-        'assets/error/css/access',
+        'assets/css/constants',
+        'assets/css/error',
       ]
     else
       rpta = [
