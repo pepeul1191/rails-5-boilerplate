@@ -7,6 +7,7 @@ module ErrorHelper
         'bower_components/font-awesome/css/font-awesome.min',
         'assets/css/constants',
         'assets/css/error',
+        'assets/css/errorsh',
       ]
     else
       rpta = [

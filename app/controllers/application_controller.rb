@@ -1,17 +1,33 @@
 class ApplicationController < ActionController::Base
   before_action :set_header
   before_action :validate_csrf_token
+  skip_before_action :verify_authenticity_token
 
   def not_found
-    redirect_to CONSTANTS[:BASE_URL] + 'error/access/404'
+    case request.method
+    when 'GET'
+      extensiones_archivos = ['css', 'js', 'png', 'img', ]
+      request_array = request.original_url.split('.')
+      extension = request_array[request_array.length - 1]
+      if !extensiones_archivos.include? extension
+        redirect_to CONSTANTS[:BASE_URL] + 'error/access/404'
+      end
+    when 'POST'
+      render :plain => {
+        :tipo_mensaje => 'error',
+        :mensaje => [
+          '404: Recurso no encontrado',
+          ]
+        }.to_json, status: 500
+    end
   end
 
   private
   def validate_csrf_token
     if request.method == 'POST'
-      if request.params[:csrfmiddlewaretoken] != CONSTANTS[:CSRF] && CONSTANTS[:ambiente] != 'produccion'
-        render :plain => {:tipo_mensaje => 'error', :mensaje => ['CSRF token error', 'CSRF token error']}.to_json, status: 500
-      end
+      #if request.params[:csrfmiddlewaretoken] != CONSTANTS[:CSRF] && CONSTANTS[:ambiente] != 'produccion'
+        #render :plain => {:tipo_mensaje => 'error', :mensaje => ['CSRF token error', 'CSRF token error']}.to_json, status: 500
+      #end
     end
   end
 

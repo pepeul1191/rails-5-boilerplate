@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
   get 'error/access/:id' => 'error#access'
   get '*unmatched_route' => 'application#not_found'
+  post '*unmatched_route' => 'application#not_found'
 end
