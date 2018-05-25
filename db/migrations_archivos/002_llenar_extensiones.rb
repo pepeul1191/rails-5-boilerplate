@@ -5,14 +5,14 @@ Sequel.migration do
     Sequel.connect('sqlite://db/archivos.db')
     #Sequel.connect('mysql2://localhost/gestion?user=root&password=123')
 		DB.transaction do
-	  	file = File.new('db/data/ubicaciones_departamentos.txt', 'r')
+	  	file = File.new('db/data/archivos_extensiones.txt', 'r')
 			while (line = file.gets)
 				line_array = line.split('::')
 				id = line_array[0]
 				nombre = line_array[1]
-        nombre = line_array[2].strip
+        mime = line_array[2].strip
 				#puts id + " - " + nombre
-				DB[:extensiones].insert(id: id, nombre: nombre)
+				DB[:extensiones].insert(id: id, nombre: nombre, mime: mime)
       end
 		end
   end
