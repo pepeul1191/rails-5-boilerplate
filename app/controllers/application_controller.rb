@@ -2,6 +2,10 @@ class ApplicationController < ActionController::Base
   before_action :set_header
   before_action :validate_csrf_token
 
+  def not_found
+    redirect_to CONSTANTS[:BASE_URL] + 'error/access/404'
+  end
+
   private
   def validate_csrf_token
     if request.method == 'POST'
@@ -18,9 +22,5 @@ class ApplicationController < ActionController::Base
     #response.set_header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, OPTIONS')
     #response.set_header('Access-Control-Request-Method', '*')
     #response.set_header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
-  end
-
-  def not_found
-    redirect_to CONSTANTS[:BASE_URL] + 'error/access/404'
   end
 end
