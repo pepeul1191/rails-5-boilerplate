@@ -3,6 +3,7 @@ var Router = Marionette.AppRouter.extend({
       'email/:email': 'showEmail',
       "" : "index",
       "extension": "extension",
+      "autor": "autor",
       "*actions" : "index"
     },
     showEmail: function(email) {
@@ -10,11 +11,15 @@ var Router = Marionette.AppRouter.extend({
       alert(email);
     },
     extension: function() {
-      //renderizar vista
+      this.extensionViewInstan = "hola";
       var extensionView = new ExtensionView({});
       extensionView.render();
-      //renderizar tabla
       extensionView.tablaExtension.listar();
+    },
+    autor: function() {
+      var autorView = new AutorView({});
+      autorView.render();
+      autorView.tablaAutor.listar();
     },
     index: function() {
         // show the email

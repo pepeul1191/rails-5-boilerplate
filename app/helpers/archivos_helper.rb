@@ -33,9 +33,12 @@ module ArchivosHelper
         'bower_components/swp-backbone/views/table',
         'bower_components/swp-backbone/views/modal',
         'models/archivos/extension',
+        'models/archivos/autor',
         'collections/archivos/extension_collection',
+        'collections/archivos/autor_collection',
         'data/archivos/tabla_extension',
-        'views/archivos/tabla_extension_view',
+        'data/archivos/tabla_autor',
+        'views/archivos/autor_view',
         'views/archivos/extension_view',
         'routes/archivos',
       ]

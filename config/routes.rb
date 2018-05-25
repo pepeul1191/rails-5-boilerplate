@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   # login y sessiones
   get 'login' => 'login#index'
-  # ubicaciones
+  # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
   post 'ubicaciones/departamento/guardar' => 'ubicaciones/departamento#guardar'
@@ -13,13 +13,19 @@ Rails.application.routes.draw do
   post 'ubicaciones/distrito/guardar' => 'ubicaciones/distrito#guardar'
   get 'ubicaciones/distrito/buscar' => 'ubicaciones/distrito#buscar'
   get 'ubicaciones/distrito/nombre/:distrito_id' => 'ubicaciones/distrito#nombre'
-  # archivos
+  # archivos/extension
   get 'archivos' => 'archivos/view#index'
   get 'archivos/extension/listar' => 'archivos/extension#listar'
   get 'archivos/extension/buscar_pagina' => 'archivos/extension#buscar_pagina'
   get 'archivos/extension/count' => 'archivos/extension#count'
   post 'archivos/extension/guardar' => 'archivos/extension#guardar'
   get 'archivos/extension/nombre_mime/:extension_id' => 'archivos/extension#nombre_mime'
+  # archivos/autor
+  get 'archivos/autor/listar' => 'archivos/autor#listar'
+  get 'archivos/autor/buscar_pagina' => 'archivos/autor#buscar_pagina'
+  get 'archivos/autor/count' => 'archivos/autor#count'
+  post 'archivos/autor/guardar' => 'archivos/autor#guardar'
+  get 'archivos/autor/nombre_mime/:autor_id' => 'archivos/autor#nombre_mime'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'

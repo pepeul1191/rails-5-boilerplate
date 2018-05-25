@@ -37,7 +37,7 @@ Crear Vista de distrito/provincia/departamento
 
 Crear migración de archivos:
 
-    $ sequel -m db/migrations_archivos -M 3 sqlite://db/archivos.db
+    $ sequel -m db/migrations_archivos -M 7 sqlite://db/archivos.db
 
 Tipos de Datos de Columnas
 

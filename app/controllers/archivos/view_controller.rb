@@ -44,7 +44,15 @@ class Archivos::ViewController < ApplicationController
               :url => 'archivos/#/libro',
             },
           ],
-        },
+        },{
+          :subtitulo => 'Videos',
+          :items => [
+            {
+              :item => 'Gestión de Videos',
+              :url => 'archivos/#/video',
+            },
+          ],
+        }
       ].to_json,
   		:js_bottom => 'dist/agricultores.min.js',
   		:data => {
