@@ -1,4 +1,4 @@
-var tablaAutor = new TableView(dataTablaAutor);
+//var tablaAutor = new TableView(dataTablaAutor);
 
 var AutorView = Backbone.View.extend({
 	el: '#workspace',
@@ -6,8 +6,7 @@ var AutorView = Backbone.View.extend({
 		//this.render();
 		//console.log("initialize");
 		this.events = this.events || {};
-		//this.tabla = new TableView(paramsDoctorTable);
-    this.tablaAutor = tablaAutor;
+    this.tablaAutor =  new TableView(dataTablaAutor);
 	},
 	events: {
 		// se está usando asignacion dinamica de eventos en el constructor
@@ -23,7 +22,6 @@ var AutorView = Backbone.View.extend({
 	},
 	render: function() {
 		this.$el.html(this.getTemplate());
-		return this;
 	},
 	getTemplate: function() {
 		var data = { };

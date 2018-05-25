@@ -7,7 +7,6 @@
     <link rel="shortcut icon" href="<%=CONSTANTS[:BASE_URL]%>favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=@locals[:title]%></title>
-    <%= load_css %>
     <script type="text/javascript">
       var BASE_URL = "<%=CONSTANTS[:BASE_URL]%>";
       var STATICS_URL  = "<%=CONSTANTS[:STATIC_URL]%>";
@@ -16,6 +15,7 @@
       var DATA = JSON.parse('<%=raw @locals[:data]%>');
       var CSRF = "<%=CONSTANTS[:CSRF]%>";
     </script>
+    <%= load_css %>
   </head>
   <body>
     <label id="defaultTargetMensajes"></label>

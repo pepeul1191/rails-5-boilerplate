@@ -1,4 +1,4 @@
-var tablaExtension = new TableView(dataTablaExtension);
+//var tablaExtension = new TableView(dataTablaExtension);
 
 var ExtensionView = Backbone.View.extend({
 	el: '#workspace',
@@ -6,7 +6,7 @@ var ExtensionView = Backbone.View.extend({
 		//this.render();
 		//console.log("initialize");
 		this.events = this.events || {};
-		//this.tabla = new TableView(paramsDoctorTable);
+		this.tablaExtension = new TableView(dataTablaExtension);
 	},
 	events: {
 		// se está usando asignacion dinamica de eventos en el constructor
@@ -19,10 +19,6 @@ var ExtensionView = Backbone.View.extend({
     "click #tablaExtension > tfoot > tr > td > span > .fa-backward": "paginacionIrAnteior",
     "click #tablaExtension > tfoot > tr > td > span > .fa-forward": "paginacionIrSiguiente",
     "click #tablaExtension > tfoot > tr > td > span > .fa-fast-forward": "paginacionIrUltimo",
-	},
-	setTabla: function(){
-		alert("setTabla");
-		this.tablaExtension = tablaExtension;
 	},
 	render: function() {
 		this.$el.html(this.getTemplate());
