@@ -18,6 +18,28 @@ class Archivos::ExtensionController < ApplicationController
 		render :plain => rpta, :status => status
 	end
 
+	def buscar_pagina
+		rpta = nil
+		status = 200
+		begin
+			data = JSON.parse(params['data'])
+		  step = data['step']
+		  page = data['page']
+			inicio = (page - 1) * step
+			rpta = Archivos::Extension.order(:id).limit(step, inicio).to_a.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en listar las extensiones',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
 	def count
 		rpta = nil
 		status = 200

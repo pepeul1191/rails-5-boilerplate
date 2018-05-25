@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   # archivos
   get 'archivos' => 'archivos/view#index'
   get 'archivos/extension/listar' => 'archivos/extension#listar'
+  get 'archivos/extension/buscar_pagina' => 'archivos/extension#buscar_pagina'
   get 'archivos/extension/count' => 'archivos/extension#count'
   post 'archivos/extension/guardar' => 'archivos/extension#guardar'
   get 'archivos/extension/nombre_mime/:extension_id' => 'archivos/extension#nombre_mime'

@@ -28,6 +28,22 @@ class Archivos::ViewController < ApplicationController
               :url => 'archivos/#/extension',
             },
           ],
+        },{
+          :subtitulo => 'Libros',
+          :items => [
+            {
+              :item => 'Gestión de Autores',
+              :url => 'archivos/#/autor',
+            },
+            {
+              :item => 'Gestión de Categorías',
+              :url => 'archivos/#/categoria',
+            },
+            {
+              :item => 'Gestión de Libros',
+              :url => 'archivos/#/libro',
+            },
+          ],
         },
       ].to_json,
   		:js_bottom => 'dist/agricultores.min.js',
