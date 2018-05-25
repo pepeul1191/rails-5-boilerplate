@@ -1,3 +1,7 @@
+var tablaDepartamento = new TablaDepatartamentoView(dataTablaDepartamento);
+var tablaProvincia = new TablaProvinciaView(dataTablaProvincia);
+var tablaDistrito = new TableView(dataTablaDistrito);
+
 var UbicacionView = Backbone.View.extend({
 	el: '#workspace',
 	initialize: function(){
@@ -5,9 +9,9 @@ var UbicacionView = Backbone.View.extend({
 		//console.log("initialize");
 		this.events = this.events || {};
 		//this.tabla = new TableView(paramsDoctorTable);
-    this.tablaDepartamento = new TablaDepatartamentoView(dataTablaDepartamento);
-    this.tablaProvincia = new TablaProvinciaView(dataTablaProvincia);
-    this.tablaDistrito = new TableView(dataTablaDistrito);
+    this.tablaDepartamento = tablaDepartamento;
+    this.tablaProvincia = tablaProvincia;
+    this.tablaDistrito = tablaDistrito;
 	},
 	events: {
 		// se está usando asignacion dinamica de eventos en el constructor
