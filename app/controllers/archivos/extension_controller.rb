@@ -18,6 +18,24 @@ class Archivos::ExtensionController < ApplicationController
 		render :plain => rpta, :status => status
 	end
 
+	def count
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::Extension.all().count
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en contar las extensiones',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
 	def guardar
 		rpta = nil
 		status = 200

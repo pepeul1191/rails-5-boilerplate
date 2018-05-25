@@ -1,10 +1,10 @@
-class Ubicaciones::ViewController < ApplicationController
-  include UbicacionesHelper
+class Archivos::ViewController < ApplicationController
+  include ArchivosHelper
   def index
     @locals = {
-      :title => 'Ubicaciones',
-      :css => UbicacionesHelper::index_css,
-      :js => UbicacionesHelper::index_js,
+      :title => 'Archivos',
+      :css => ArchivosHelper::index_css,
+      :js => ArchivosHelper::index_js,
       :modulos => [
         {
           :url => 'accesos/',
@@ -21,15 +21,11 @@ class Ubicaciones::ViewController < ApplicationController
       ].to_json,
   		:items => [
         {
-          :subtitulo => 'Maestros',
+          :subtitulo => 'Opciones',
           :items => [
             {
-              :item => 'Gestión de Ubicaciones',
-              :url => 'maestros/#/ubicacion',
-            },
-            {
               :item => 'Gestión de Extensiones',
-              :url => 'maestros/#/extension',
+              :url => 'archivos/#/extension',
             },
           ],
         },
@@ -37,8 +33,8 @@ class Ubicaciones::ViewController < ApplicationController
   		:js_bottom => 'dist/agricultores.min.js',
   		:data => {
   			:mensaje => false,
-  			:titulo_pagina => 'Gestión de Agricultores',
-  			:modulo => 'Maestros',
+  			:titulo_pagina => 'Gestión de Archivos',
+  			:modulo => 'Archivos',
   		}.to_json,
     }
     render template: 'ubicaciones/index', layout: 'hbs_app'
