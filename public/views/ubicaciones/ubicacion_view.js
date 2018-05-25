@@ -1,7 +1,3 @@
-var tablaDepartamento = new TablaDepatartamentoView(dataTablaDepartamento);
-var tablaProvincia = new TablaProvinciaView(dataTablaProvincia);
-var tablaDistrito = new TableView(dataTablaDistrito);
-
 var UbicacionView = Backbone.View.extend({
 	el: '#workspace',
 	initialize: function(){
@@ -9,9 +5,9 @@ var UbicacionView = Backbone.View.extend({
 		//console.log("initialize");
 		this.events = this.events || {};
 		//this.tabla = new TableView(paramsDoctorTable);
-    this.tablaDepartamento = tablaDepartamento;
-    this.tablaProvincia = tablaProvincia;
-    this.tablaDistrito = tablaDistrito;
+    this.tablaDepartamento = new TablaDepatartamentoView(dataTablaDepartamento);
+    this.tablaProvincia = new TablaProvinciaView(dataTablaProvincia);
+    this.tablaDistrito = new TableView(dataTablaDistrito);
 	},
 	events: {
 		// se está usando asignacion dinamica de eventos en el constructor
@@ -50,9 +46,6 @@ var UbicacionView = Backbone.View.extend({
 		   }
 		});
 		return template_compiled;
-	},
-	mostrarTabla: function(){
-		this.tabla.listar();
 	},
   //evnetos tabla de departamentos
   inputTextEscribirDepartamento: function(event){

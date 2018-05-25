@@ -1,34 +1,29 @@
-var Router = Marionette.AppRouter.extend({
-    routes: {
-      'email/:email': 'showEmail',
-      "" : "index",
-      "ubicacion": "ubicacion",
-      "*actions" : "index"
-    },
-    showEmail: function(email) {
-        // show the email
-      alert(email);
-    },
-    ubicacion: function() {
-      //renderizar vista
-      var ubicacicionView = new UbicacionView({});
-      ubicacicionView.render();
-      //renderizar tabla
-      ubicacicionView.tablaDepartamento.listar();
-    },
-    index: function() {
-        // show the email
-    },
+var ubicacionesRouter = Backbone.Router.extend({
+  extensionViewInstance: null,
+  autorViewInstance: null,
+  initialize: function() {
+  },
+  routes: {
+    "": "index",
+    "ubicacion": "ubicacion",
+    "*actions" : "default",
+  },
+  index: function(){
+    window.location.href = BASE_URL + "maestros/#/";
+  },
+  ubicacion: function() {
+    if(this.ubicacicionView == null){
+      this.ubicacicionView = new UbicacionView();
+    }
+    this.ubicacicionView.render();
+    this.ubicacicionView.tablaDepartamento.listar();
+  },
+  default: function() {
+    window.location.href = BASE_URL + "maestros/#/error/404";
+  },
 });
 
-
-var App = Marionette.Application.extend({
-  region: '#body-app',
-  onStart() {
-    var router = new Router();
-    Backbone.history.start();
-  }
-});
-
-var myApp = new App();
-myApp.start();
+$(document).ready(function(){
+  router = new ubicacionesRouter();
+  Backbone.history.start();
+})

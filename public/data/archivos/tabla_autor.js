@@ -27,7 +27,7 @@ var dataTablaAutor = {
   },
   pagination: {
     urlCount: BASE_URL + "archivos/autor/count",
-    pageSize: 20,
+    pageSize: 10,
     idBotonesPaginacion: "autoresBotonesPaginacion"
   },
   filaBotones: [
