@@ -11,6 +11,7 @@
     <form class="login-form" action="<%=CONSTANTS[:BASE_URL]%>login/acceder" method="post">
       <input type="text" placeholder="usuario" name="usuario"/>
       <input type="password" placeholder="contrasenia" name="contrasenia"/>
+      <input type="hidden" name="csrftoken" value="<%=CONSTANTS[:CSRF]%>">
       <button type="submit">login</button>
       <p class="message">Not registered? <a href="#">Create an account</a></p>
     </form>

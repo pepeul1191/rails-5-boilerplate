@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   private
   def validate_csrf_token
     if request.method == 'POST'
-      #if request.params[:csrfmiddlewaretoken] != CONSTANTS[:CSRF] && CONSTANTS[:ambiente] != 'produccion'
+      #if request.params[:csrfretoken] != CONSTANTS[:CSRF] && CONSTANTS[:ambiente] != 'produccion'
         #render :plain => {:tipo_mensaje => 'error', :mensaje => ['CSRF token error', 'CSRF token error']}.to_json, status: 500
       #end
     end
