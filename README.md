@@ -35,6 +35,10 @@ Crear Vista de distrito/provincia/departamento
     >> CREATE VIEW vw_distrito_provincia_departamentos AS select DI.id AS id,  DI.nombre || ', '  || PR.nombre || ', '  || DE.nombre AS nombre
     from distritos DI join provincias PR on DI.provincia_id = PR.id join departamentos DE on PR.departamento_id = DE.id limit 2000;
 
+Crear migración de archivos:
+
+    $ sequel -m db/migrations_archivos -M 3 sqlite://db/archivos.db
+
 Tipos de Datos de Columnas
 
 + :string=>String
