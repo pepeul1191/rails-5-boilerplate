@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get 'archivos/autor/count' => 'archivos/autor#count'
   post 'archivos/autor/guardar' => 'archivos/autor#guardar'
   get 'archivos/autor/nombre_mime/:autor_id' => 'archivos/autor#nombre_mime'
+  # archivos/categoria
+  get 'archivos/categoria/listar' => 'archivos/categoria#listar'
+  post 'archivos/categoria/guardar' => 'archivos/categoria#guardar'
+  get 'archivos/categoria/nombre/:categoria_id' => 'archivos/categoria#nombre'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'

@@ -7,6 +7,7 @@ var archivosRouter = Backbone.Router.extend({
     "": "index",
     "extension": "extension",
     "autor": "autor",
+    "categoria": "categoria",
     "*actions" : "default",
   },
   index: function(){
@@ -26,8 +27,15 @@ var archivosRouter = Backbone.Router.extend({
     this.autorViewInstance.render();
     this.autorViewInstance.tablaAutor.listar();
   },
+  categoria: function() {
+    if(this.categoriaViewInstance == null){
+      this.categoriaViewInstance = new CategoriaView();
+    }
+    this.categoriaViewInstance.render();
+    this.categoriaViewInstance.tablaCategoria.listar();
+  },
   default: function() {
-    window.location.href = BASE_URL + "archivos/#/error/404";
+    window.location.href = BASE_URL + "error/access/404";
   },
 });
 
