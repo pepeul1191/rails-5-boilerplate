@@ -1,6 +1,9 @@
 var archivosRouter = Backbone.Router.extend({
   extensionViewInstance: null,
   autorViewInstance: null,
+  categoriaViewInstance: null,
+  libroViewInstance: null,
+  libroDetalleViewInstance: null,
   initialize: function() {
   },
   routes: {
@@ -8,6 +11,9 @@ var archivosRouter = Backbone.Router.extend({
     "extension": "extension",
     "autor": "autor",
     "categoria": "categoria",
+    "libro": "libro",
+    "libro/crear": "libroCrear",
+    "libro/editar/:libro_id": "libroEditar",
     "*actions" : "default",
   },
   index: function(){
@@ -34,8 +40,33 @@ var archivosRouter = Backbone.Router.extend({
     this.categoriaViewInstance.render();
     this.categoriaViewInstance.tablaCategoria.listar();
   },
+  libro: function() {
+    if(this.libroViewInstance == null){
+      this.libroViewInstance = new LibroView();
+    }
+    this.libroViewInstance.render();
+    this.libroViewInstance.tablaLibro.listar();
+  },
+  libroCrear: function() {
+    $("#btnModal").click();
+    if(this.libroDetalleViewInstance == null){
+      this.libroDetalleViewInstance = new LibroDetalleView(dataLibroDetalle);
+    }
+    this.libroDetalleViewInstance.set("libro_id", "E");
+    this.libroDetalleViewInstance.context.titulo_modal = "Crear Libro";
+    this.libroDetalleViewInstance.render();
+  },
+  libroEditar: function(libro_id) {
+    $("#btnModal").click();
+    if(this.libroDetalleViewInstance == null){
+      this.libroDetalleViewInstance = new LibroDetalleView(dataLibroDetalle);
+    }
+    this.libroDetalleViewInstance.set("libro_id", libro_id);
+    this.libroDetalleViewInstance.context.titulo_modal = "Editar Libro";
+    this.libroDetalleViewInstance.render();
+  },
   default: function() {
-    window.location.href = BASE_URL + "error/access/404";
+    //window.location.href = BASE_URL + "error/access/404";
   },
 });
 
