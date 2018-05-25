@@ -10,7 +10,7 @@
     <%= load_css %>
     <script type="text/javascript">
       var BASE_URL = "<%=CONSTANTS[:BASE_URL]%>";
-      var STATICS_URL  = "<%=CONSTANTS[:STATICS_URL]%>";
+      var STATICS_URL  = "<%=CONSTANTS[:STATIC_URL]%>";
       var MODULOS_JSON = JSON.parse('<%=raw @locals[:modulos]%>');
       var ITEMS_JSON = JSON.parse('<%=raw @locals[:items]%>');
       var DATA = JSON.parse('<%=raw @locals[:data]%>');
@@ -19,7 +19,6 @@
   </head>
   <body>
     <label id="defaultTargetMensajes"></label>
-    <input type="hidden" name="ci_csrf_token" value="\\" onmouseover=prompt(965267) bad=\"" />
     <!-- Inicio modal -->
     <button type="button" class="btn btn-primary btn-lg oculto" data-toggle="modal" data-target="#modal-container" id="btnModal">Launch demo modal</button>
     <div class="modal fade" id="modal-container" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
