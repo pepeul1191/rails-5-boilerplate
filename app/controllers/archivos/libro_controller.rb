@@ -113,4 +113,44 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def buscar_pagina
+		rpta = nil
+		status = 200
+		begin
+			data = JSON.parse(params['data'])
+			step = data['step']
+			page = data['page']
+			inicio = (page - 1) * step
+			rpta = Archivos::Libro.select(:id, :nombre, :paginas).order(:id).limit(step, inicio).to_a.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en listar los libros',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
+	def count
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::Libro.all().count
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en contar los libros',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end

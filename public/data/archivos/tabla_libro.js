@@ -5,11 +5,11 @@ var dataTablaLibro = {
   mensajes: {
     errorListarAjax: "Error en listar los datos del servidor",
     errorGuardarAjax: "Error en guardar los datos en el servidor",
-    success: "Se cargado guardo los cambios en los categorias",
+    success: "Se cargado guardo los cambios en los libros",
   },
   //urlListar: BASE_URL + "distrito/listar/" + provinciaId,
-  urlGuardar: BASE_URL + "archivos/categoria/guardar",
-  urlListar: BASE_URL + "archivos/categoria/listar",
+  urlGuardar: BASE_URL + "archivos/libro/guardar",
+  urlListar: BASE_URL + "archivos/libro/buscar_pagina",
   fila: {
     id: { // llave de REST
       tipo: "td_id",
@@ -62,6 +62,11 @@ var dataTablaLibro = {
       estilos: "padding-left: 10px;",
     },
   ],
+  pagination: {
+    urlCount: BASE_URL + "archivos/libro/count",
+    pageSize: 20,
+    idBotonesPaginacion: "librosBotonesPaginacion"
+  },
   collection: new LibrosCollection(),
   model: "Libro",
 };
