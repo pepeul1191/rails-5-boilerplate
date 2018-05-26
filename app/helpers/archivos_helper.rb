@@ -45,6 +45,8 @@ module ArchivosHelper
         'data/archivos/tabla_autor',
         'data/archivos/tabla_categoria',
         'data/archivos/tabla_libro',
+        'data/archivos/tabla_libro_autor',
+        'data/archivos/tabla_libro_categoria',
         'data/archivos/libro_detalle',
         'data/archivos/libro_upload',
         'views/archivos/autor_view',

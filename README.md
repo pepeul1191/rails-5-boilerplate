@@ -35,6 +35,22 @@ Crear Vista de distrito/provincia/departamento
     >> CREATE VIEW vw_distrito_provincia_departamentos AS select DI.id AS id,  DI.nombre || ', '  || PR.nombre || ', '  || DE.nombre AS nombre
     from distritos DI join provincias PR on DI.provincia_id = PR.id join departamentos DE on PR.departamento_id = DE.id limit 2000;
 
+    >> DROP VIEW IF EXISTS vw_libros_categorias;
+    CREATE VIEW vw_libros_categorias AS SELECT
+    C.id AS categoria_id, C.nombre AS categoria_nombre,  L.id AS libro_id, L.nombre as libro_nombre FROM
+    libros_categorias LC
+    INNER JOIN categorias C ON C.id = LC.categoria_id  
+    INNER JOIN libros L ON  LC.libro_id = L.id
+    LIMIT 2000;
+
+    >> DROP VIEW IF EXISTS vw_libros_autores;
+    CREATE VIEW vw_libros_autores AS SELECT
+    A.id AS autor_id, A.nombre AS autor_nombre, L.id AS libro_id, L.nombre as libro_nombre FROM
+    libros_autores LA
+    INNER JOIN autores A ON A.id = LA.autor_id  
+    INNER JOIN libros L ON  LA.libro_id = L.id
+    LIMIT 2000;
+
 Crear migración de archivos:
 
     $ sequel -m db/migrations_archivos -M 7 sqlite://db/archivos.db
