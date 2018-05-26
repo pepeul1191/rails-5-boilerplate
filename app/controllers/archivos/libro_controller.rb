@@ -41,6 +41,44 @@ class Archivos::LibroController < ApplicationController
 		render :plain => rpta, :status => status
 	end
 
+	def guardar_archivo
+		rpta = nil
+		status = 200
+		data = JSON.parse(params[:data])
+		begin
+			if data['id'] == 'E'
+				status = 500
+				rpta = {
+					:tipo_mensaje => 'error',
+					:mensaje => [
+						'Debe primeo guardar el detalle del libro',
+						libro.id,
+					]
+				}.to_json
+			else
+				archivo = Archivos::Libro.where(:id => data['id']).first
+				archivo.archivo_id = data['archivo_id']
+				archivo.save
+				rpta = {
+					:tipo_mensaje => 'success',
+					:mensaje => [
+						'Se ha agregado el documento al libro',
+					]
+				}.to_json
+			end
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en anexar el archivo al libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
 	def subir
 		rpta = nil
 		status = 200

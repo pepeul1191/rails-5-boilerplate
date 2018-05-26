@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'archivos/categoria/nombre/:categoria_id' => 'archivos/categoria#nombre'
   # archivos/libro
   post 'archivos/libro/guardar_detalle' => 'archivos/libro#guardar_detalle'
+  post 'archivos/libro/guardar_archivo' => 'archivos/libro#guardar_archivo'
   put 'archivos/libro/subir' => 'archivos/libro#subir'
   # errores
   get 'error/access/:id' => 'error#access'

@@ -69,6 +69,31 @@ var LibroDetalleView = ModalView.extend({
     });
   },
   guardarDetalleLibroArchivo: function(){
-    console.log(this.uploadLibro.model.id);
+    var viewInstance = this;
+    this.model.set("archivo_id", this.uploadLibro.model.id);
+    $.ajax({
+      type: "POST",
+      url: BASE_URL + "archivos/libro/guardar_archivo",
+      data: {csrfmiddlewaretoken: CSRF, data: JSON.stringify(viewInstance.model.toJSON())},
+      async: false,
+      success: function(data){
+        var responseData = JSON.parse(data);
+        if(responseData.tipo_mensaje == "success"){
+          $("#" + viewInstance.targetMensaje).removeClass("color-danger");
+          $("#" + viewInstance.targetMensaje).removeClass("color-warning");
+          $("#" + viewInstance.targetMensaje).addClass("color-success");
+          $("#" + viewInstance.targetMensaje).html(responseData.mensaje[0]);
+          $("html, body").animate({ scrollTop: $("#" + viewInstance.targetMensaje).offset().top }, 1000);
+        }
+      },
+      error: function(error){
+        $("#" + viewInstance.targetMensaje).removeClass("color-success");
+        $("#" + viewInstance.targetMensaje).removeClass("color-warning");
+        $("#" + viewInstance.targetMensaje).addClass("color-danger");
+        $("#" + viewInstance.targetMensaje).html("Error en guardar al doctor de turno");
+        $("html, body").animate({ scrollTop: $("#" + viewInstance.targetMensaje).offset().top }, 1000);
+        console.log(error);
+      }
+    });
   },
 });
