@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   post 'archivos/categoria/guardar' => 'archivos/categoria#guardar'
   get 'archivos/categoria/nombre/:categoria_id' => 'archivos/categoria#nombre'
   # archivos/libro
+  post 'archivos/libro/guardar_detalle' => 'archivos/libro#guardar_detalle'
   put 'archivos/libro/subir' => 'archivos/libro#subir'
   # errores
   get 'error/access/:id' => 'error#access'

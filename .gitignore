@@ -36,3 +36,5 @@ public/dist
 .DS_Store
 *.ods#
 Gemfile.lock
+
+public/libros

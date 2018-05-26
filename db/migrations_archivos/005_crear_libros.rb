@@ -10,13 +10,11 @@ Sequel.migration do
     end
 
     alter_table(:libros) do
-      add_foreign_key :extension_id, :extensiones, null: true
       add_foreign_key :archivo_id, :archivos, null: true
     end
 	end
 
   down do
-    drop_column :libros, :extension_id
     drop_column :libros, :archivo_id
     drop_table(:libros)
 	end

@@ -1,5 +1,46 @@
 class Archivos::LibroController < ApplicationController
 	#protect_from_forgery except: :listar
+	def guardar_detalle
+		rpta = nil
+		status = 200
+		data = JSON.parse(params[:data])
+		begin
+			if data['id'] == 'E'
+				libro = Archivos::Libro.new(:nombre => data['nombre'], :paginas => data['paginas'], :anio => data['anio'])
+				libro.save
+				rpta = {
+					:tipo_mensaje => 'success',
+					:mensaje => [
+						'Se ha registrado el detalle de un nuevo libro',
+						libro.id,
+					]
+				}.to_json
+			else
+				archivo = Archivos::Libro.where(:id => data['id']).first
+				archivo.nombre = data['nombre']
+				archivo.paginas = data['paginas']
+				archivo.anio = data['anio']
+				archivo.save
+				rpta = {
+					:tipo_mensaje => 'success',
+					:mensaje => [
+						'Se ha editado el detalle de libro',
+					]
+				}.to_json
+			end
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en registrar el detalle del libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
 	def subir
 		rpta = nil
 		status = 200
