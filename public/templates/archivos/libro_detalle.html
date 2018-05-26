@@ -52,6 +52,7 @@
         <div class="row">
           <div class="col-md-12">
             <h6>Adjuntar Archivo</h6>
+            <label id="lblMensajeUpload"></label>
             <div class="row">
               <div class="col-md-5">
                 <div class="form-group">
@@ -60,13 +61,13 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="form-group" style="margin-bottom:10px">
+                <div class="form-group" style="margin-bottom:10px" id="formUploadLibro">
                   <label style="width:100%">Foto</label>
                   <label id="imagen_id" class="oculto">E</label>
-                  <input type="file" id="input_file" name="myFile" type="file" class="oculto"/>
-                  <button id="buscar_file" class="btn btn-default btn-file pull-left"><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
-                  <button id="subir_file" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
-                  <a target="_blank" id="ver_file" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
+                  <input type="file" id="inputLibro" name="myFile" type="file" class="oculto"/>
+                  <button id="buscarLibro" class="btn btn-default btn-file pull-left"><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
+                  <button id="subirLibro" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
+                  <a target="_blank" id="verLibro" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
                 </div>
               </div>
               <div class="col-md-2">

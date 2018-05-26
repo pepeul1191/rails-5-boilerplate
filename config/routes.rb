@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   get 'archivos/categoria/listar' => 'archivos/categoria#listar'
   post 'archivos/categoria/guardar' => 'archivos/categoria#guardar'
   get 'archivos/categoria/nombre/:categoria_id' => 'archivos/categoria#nombre'
+  # archivos/libro
+  put 'archivos/libro/subir' => 'archivos/libro#subir'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'

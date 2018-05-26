@@ -6,10 +6,8 @@ var LibroDetalleView = ModalView.extend({
     this.inheritEvents(ModalView);
     // delegación de eventos
     this.delegateEvents();
+    this.uploadLibro = new UploadView(dataLibroUpload);
     /*
-    this.sexosSelect =  new SexosCollection({
-      targetMensaje: "defaultTargetMensajes",
-    });
     this.tipoSedesSelect = new TipoSedesCollection({
       targetMensaje: "defaultTargetMensajes",
     });
@@ -26,6 +24,14 @@ var LibroDetalleView = ModalView.extend({
     // se está usando asignacion dinamica de eventos en el constructor
     "change #cbmTipoSede": "refrescarSedes",
     "click #btnGuardarDetalleDoctor": "guardarDoctor",
+    "click #buscarLibro": "buscarLibro",
+    "click #subirLibro" : "subirLibro",
+  },
+  buscarLibro: function(){
+    this.uploadLibro.triggerInputFile();
+  },
+  subirLibro: function(){
+    this.uploadLibro.subirFile();
   },
   setModel: function(){
     var viewInstance = this;
