@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'archivos/libro/buscar_pagina' => 'archivos/libro#buscar_pagina'
   get 'archivos/libro/count' => 'archivos/libro#count'
   put 'archivos/libro/subir' => 'archivos/libro#subir'
+  post 'archivos/libro/guardar' => 'archivos/libro#guardar'
   get 'archivos/libro/listar/autores/:libro_id' => 'archivos/libro#listar_autores'
   get 'archivos/libro/listar/categorias/:libro_id' => 'archivos/libro#listar_categorias'
   get 'archivos/libro/listar/autores/:libro_id' => 'archivos/libro#listar_autores'

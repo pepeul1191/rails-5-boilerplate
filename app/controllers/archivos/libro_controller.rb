@@ -361,4 +361,48 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def guardar
+		rpta = nil
+		status = 200
+		data = JSON.parse(params[:data])
+		eliminados = data['eliminados']
+		rpta = []
+		array_nuevos = []
+		error = false
+		execption = nil
+		DB_ARCHIVOS.transaction do
+			begin
+				if eliminados.length != 0
+					eliminados.each do |eliminado|
+						Archivos::LibroAutor.where(:libro_id => eliminado).delete
+						Archivos::LibroCategoria.where(:libro_id => eliminado).delete
+						Archivos::Libro.where(:id => eliminado).delete
+					end
+				end
+			rescue Exception => e
+				Sequel::Rollback
+				error = true
+				execption = e
+			end
+		end
+		if error == false
+			rpta = {
+				:tipo_mensaje => 'success',
+				:mensaje => [
+					'Se ha registrado los cambios en los libros',
+					array_nuevos
+					]
+				}.to_json
+		else
+			status = 500
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en guardar la tabla de libros',
+					execption.message]
+				}.to_json
+		end
+		render :plain => rpta, :status => status
+	end
 end
