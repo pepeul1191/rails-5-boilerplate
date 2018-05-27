@@ -28,10 +28,10 @@ var dataTablaLibro = {
     },
     autores: { // llave de REST
       tipo: "text",
-      estilos: "width: 300px;",
+      estilos: "width: 200px;",
       edicion: true,
     },
-    categoria: { // llave de REST
+    categorias: { // llave de REST
       tipo: "text",
       estilos: "width: 200px;",
       edicion: true,
