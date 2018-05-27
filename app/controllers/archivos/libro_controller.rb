@@ -153,4 +153,40 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def listar_categorias
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::VWLibroCategoria.select(:libro_id, :categoria_id, :categoria_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en listar las categorias del libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
+
+	def listar_autores
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::VWLibroAutor.select(:autor_id, :autor_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en listar los autores del libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end

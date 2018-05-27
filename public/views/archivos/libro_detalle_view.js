@@ -7,6 +7,7 @@ var LibroDetalleView = ModalView.extend({
     // delegación de eventos
     this.delegateEvents();
     this.uploadLibro = new UploadView(dataLibroUpload);
+    this.tablaCategoriaLibro = new TableView(dataLibroCategoria);
     /*
     this.tipoSedesSelect = new TipoSedesCollection({
       targetMensaje: "defaultTargetMensajes",
@@ -28,6 +29,15 @@ var LibroDetalleView = ModalView.extend({
     "click #subirLibro" : "subirLibro",
     "click #btnGuardarDetalleLibroArchivo": "guardarDetalleLibroArchivo",
     "click #btnGuardarDetalleLibro": "guardarDetalleLibro",
+    "click #tablaCategoriaLibro > tfoot > tr > td > button.agregar-fila": "agregarFilaCategoria",
+    "click #tablaCategoriaLibro > tfoot > tr > td > button.guardar-tabla": "guardarTablaCategoria",
+  },
+  agregarFilaCategoria: function(event){
+    this.tablaCategoriaLibro.agregarFila(event);
+  },
+  guardarTablaCategoria: function(event){
+    this.tablaCategoriaLibro.extraData = {libro_id: this.model.get("id")};
+    this.tablaCategoriaLibro.guardarTabla(event);
   },
   buscarLibro: function(){
     this.uploadLibro.triggerInputFile();

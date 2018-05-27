@@ -8,6 +8,7 @@ module ArchivosHelper
         'bower_components/swp-backbone/assets/css/constants',
         'bower_components/swp-backbone/assets/css/dashboard',
         'bower_components/swp-backbone/assets/css/table',
+        'bower_components/swp-backbone/assets/css/autocomplete',
         'assets/css/constants',
         'assets/css/styles',
       ]
@@ -32,6 +33,7 @@ module ArchivosHelper
         'bower_components/swp-backbone/views/table',
         'bower_components/swp-backbone/views/modal',
         'bower_components/swp-backbone/views/upload',
+        'bower_components/swp-backbone/views/autocomplete',
         'models/archivos/extension',
         'models/archivos/autor',
         'models/archivos/categoria',

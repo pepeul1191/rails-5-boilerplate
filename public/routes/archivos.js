@@ -52,9 +52,14 @@ var archivosRouter = Backbone.Router.extend({
     if(this.libroDetalleViewInstance == null){
       this.libroDetalleViewInstance = new LibroDetalleView(dataLibroDetalle);
     }
-    this.libroDetalleViewInstance.set("libro_id", "E");
+    this.libroDetalleViewInstance.extraData = {libro_id: "E"};
     this.libroDetalleViewInstance.context.titulo_modal = "Crear Libro";
     this.libroDetalleViewInstance.render();
+    this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
+      this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar + "E";
+    this.libroDetalleViewInstance.tablaCategoriaLibro.listar();
+    this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
+      this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar.slice(0, -1);
   },
   libroEditar: function(libro_id) {
     $("#btnModal").click();
@@ -63,6 +68,11 @@ var archivosRouter = Backbone.Router.extend({
     }
     this.libroDetalleViewInstance.set("libro_id", libro_id);
     this.libroDetalleViewInstance.context.titulo_modal = "Editar Libro";
+    this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
+      this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar + libro_id;
+    this.libroDetalleViewInstance.tablaCategoriaLibro.listar();
+    this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
+      this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar.replace(libro_id, '');
     this.libroDetalleViewInstance.render();
   },
   default: function() {

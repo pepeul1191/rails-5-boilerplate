@@ -95,4 +95,22 @@ class Archivos::CategoriaController < ApplicationController
     end
     render :plain => rpta, :status => status
   end
+
+	def buscar
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::Categoria.where(Sequel.like(:nombre, params[:nombre] + '%')).limit(10).to_a.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en buscar coincidencias en los nombres de las categorias',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end
