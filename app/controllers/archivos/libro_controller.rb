@@ -91,7 +91,7 @@ class Archivos::LibroController < ApplicationController
 			ruta = 'public/libros/'
 			# mover el archivo
       FileUtils.mv(params[:myFile].path, ruta + nombre + '.' + extension)
-			archivo = Archivos::Archivo.new(:nombre => (nombre + '.' + extension), :ruta => ruta, :extension_id => extension_id)
+			archivo = Archivos::Archivo.new(:nombre => nombre, :ruta => 'libros/', :extension_id => extension_id)
 			archivo.save
       rpta = {
 				:tipo_mensaje => 'success',
@@ -348,7 +348,7 @@ class Archivos::LibroController < ApplicationController
 		rpta = nil
 		status = 200
 		begin
-			rpta = Archivos::Libro.where(:id => params[:libro_id]).first.to_json
+			rpta = Archivos::VWLibroArchivo.where(:id => params[:libro_id]).first.to_json
 		rescue Exception => e
 			rpta = {
 				:tipo_mensaje => 'error',

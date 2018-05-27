@@ -76,7 +76,8 @@ var archivosRouter = Backbone.Router.extend({
     this.libroDetalleViewInstance.set("libro_id", libro_id);
     this.libroDetalleViewInstance.setModel();
     this.libroDetalleViewInstance.context.titulo_modal = "Editar Libro";
-    this.libroDetalleViewInstance.context.libro = this.libroDetalleViewInstance.model;
+    this.libroDetalleViewInstance.context.BASE_URL = BASE_URL;
+    this.libroDetalleViewInstance.context.libro = this.libroDetalleViewInstance.model.toJSON();
     this.libroDetalleViewInstance.render();
     //tabla de categoria libro
     this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =

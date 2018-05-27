@@ -60,7 +60,10 @@ var LibroDetalleView = ModalView.extend({
       data: {csrfmiddlewaretoken: CSRF},
       async: false,
       success: function(data){
-        viewInstance.model = JSON.parse(data);
+        responseData = JSON.parse(data);
+        for (var key in responseData) {
+          viewInstance.model.set(key, responseData[key]);
+        }
       },
       error: function(error){
         $("#" + viewInstance.targetMensaje).removeClass("color-success");

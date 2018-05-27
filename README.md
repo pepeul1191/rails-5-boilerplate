@@ -51,6 +51,14 @@ Crear Vista de distrito/provincia/departamento
     INNER JOIN libros L ON  LA.libro_id = L.id
     LIMIT 2000;
 
+    >>DROP VIEW IF EXISTS vw_libros_archivos;
+    CREATE VIEW vw_libros_archivos AS SELECT
+    L.id, L.nombre, L.anio, L.paginas, L.archivo_id, A.nombre as libro_nombre, A.ruta || A.nombre || '.' || E.nombre AS libro_ruta FROM
+    libros L
+    INNER JOIN archivos A ON A.id = L.archivo_id  
+    INNER JOIN extensiones E ON A.extension_id = E.id  
+    LIMIT 2000;
+
 Crear migración de archivos:
 
     $ sequel -m db/migrations_archivos -M 7 sqlite://db/archivos.db

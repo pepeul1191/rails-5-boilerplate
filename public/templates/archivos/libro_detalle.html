@@ -48,7 +48,7 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <label for="txtNombreArchivo">Nombre del Arhcivo</label>
-                  <input type="text" class="form-control" id="txtNombreArchivo" placeholder="" value="{{libro.nombre_generado}}">
+                  <input type="text" class="form-control" id="txtNombreArchivo" placeholder="" value="{{libro.libro_nombre}}">
                 </div>
               </div>
               <div class="col-md-4">
@@ -58,7 +58,7 @@
                   <input type="file" id="inputLibro" name="myFile" type="file" class="oculto"/>
                   <button id="buscarLibro" class="btn btn-default btn-file pull-left"><i class="fa fa-file-image-o" aria-hidden="true"></i>Buscar </button>
                   <button id="subirLibro" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-upload" aria-hidden="true"></i>Subir </button>
-                  <a target="_blank" id="verLibro" class="btn btn-default btn-file pull-left" disabled><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
+                  <a target="_blank" id="verLibro" class="btn btn-default btn-file pull-left" href="{{BASE_URL}}{{libro.libro_ruta}}" disabled><i class="fa fa-search" aria-hidden="true" style="margin-right: 5px"></i>Ver </a>
                 </div>
               </div>
               <div class="col-md-2">
