@@ -31,6 +31,7 @@ var LibroDetalleView = ModalView.extend({
     "click #btnGuardarDetalleLibro": "guardarDetalleLibro",
     "click #tablaCategoriaLibro > tfoot > tr > td > button.agregar-fila": "agregarFilaCategoria",
     "click #tablaCategoriaLibro > tfoot > tr > td > button.guardar-tabla": "guardarTablaCategoria",
+    "click #tablaCategoriaLibro > tbody > tr > td > i.quitar-fila": "quitarFilaTablaCategoria",
   },
   agregarFilaCategoria: function(event){
     this.tablaCategoriaLibro.agregarFila(event);
@@ -38,6 +39,9 @@ var LibroDetalleView = ModalView.extend({
   guardarTablaCategoria: function(event){
     this.tablaCategoriaLibro.extraData = {libro_id: this.model.get("id")};
     this.tablaCategoriaLibro.guardarTabla(event);
+  },
+  quitarFilaTablaCategoria: function(event){
+    this.tablaCategoriaLibro.quitarFila(event);
   },
   buscarLibro: function(){
     this.uploadLibro.triggerInputFile();

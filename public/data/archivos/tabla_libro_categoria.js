@@ -8,10 +8,10 @@ var dataLibroCategoria = new TableView({
     success: "Se cargado guardo las asociaciones a las categorias",
   },
   //urlListar: BASE_URL + "distrito/listar/" + provinciaId,
-  urlGuardar: BASE_URL + "archivos/libro/guardar/categorias/",
+  urlGuardar: BASE_URL + "archivos/libro/guardar/categoria",
   urlListar: BASE_URL + "archivos/libro/listar/categorias/",
   fila: {
-    libro_id: { // llave de REST
+    id: { // llave de REST
       tipo: "td_id",
       estilos: "color: blue; display:none",
       edicion: false,
