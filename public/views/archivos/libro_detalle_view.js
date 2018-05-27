@@ -8,17 +8,7 @@ var LibroDetalleView = ModalView.extend({
     this.delegateEvents();
     this.uploadLibro = new UploadView(dataLibroUpload);
     this.tablaCategoriaLibro = new TableView(dataLibroCategoria);
-    /*
-    this.tipoSedesSelect = new TipoSedesCollection({
-      targetMensaje: "defaultTargetMensajes",
-    });
-    this.sedesSelect = new SedesCollection({
-      targetMensaje: "defaultTargetMensajes",
-    });
-    this.especialidadesSelect = new EspecialidadesCollection({
-      targetMensaje: "defaultTargetMensajes",
-    });
-    */
+    this.tablaAutorLibro = new TableView(dataLibroAutor);
     this.model = new Libro();
   },
   events: {
@@ -32,6 +22,9 @@ var LibroDetalleView = ModalView.extend({
     "click #tablaCategoriaLibro > tfoot > tr > td > button.agregar-fila": "agregarFilaCategoria",
     "click #tablaCategoriaLibro > tfoot > tr > td > button.guardar-tabla": "guardarTablaCategoria",
     "click #tablaCategoriaLibro > tbody > tr > td > i.quitar-fila": "quitarFilaTablaCategoria",
+    "click #tablaAutorLibro > tfoot > tr > td > button.agregar-fila": "agregarFilaAutor",
+    "click #tablaAutorLibro > tfoot > tr > td > button.guardar-tabla": "guardarTablaAutor",
+    "click #tablaAutorLibro > tbody > tr > td > i.quitar-fila": "quitarFilaTablaAutor",
   },
   agregarFilaCategoria: function(event){
     this.tablaCategoriaLibro.agregarFila(event);
@@ -42,6 +35,16 @@ var LibroDetalleView = ModalView.extend({
   },
   quitarFilaTablaCategoria: function(event){
     this.tablaCategoriaLibro.quitarFila(event);
+  },
+  agregarFilaAutor: function(event){
+    this.tablaAutorLibro.agregarFila(event);
+  },
+  guardarTablaAutor: function(event){
+    this.tablaAutorLibro.extraData = {libro_id: this.model.get("id")};
+    this.tablaAutorLibro.guardarTabla(event);
+  },
+  quitarFilaTablaAutor: function(event){
+    this.tablaAutorLibro.quitarFila(event);
   },
   buscarLibro: function(){
     this.uploadLibro.triggerInputFile();

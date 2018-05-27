@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'archivos/autor/count' => 'archivos/autor#count'
   post 'archivos/autor/guardar' => 'archivos/autor#guardar'
   get 'archivos/autor/nombre_mime/:autor_id' => 'archivos/autor#nombre_mime'
+  get 'archivos/autor/buscar' => 'archivos/autor#buscar'
   # archivos/categoria
   get 'archivos/categoria/listar' => 'archivos/categoria#listar'
   post 'archivos/categoria/guardar' => 'archivos/categoria#guardar'
@@ -39,7 +40,9 @@ Rails.application.routes.draw do
   put 'archivos/libro/subir' => 'archivos/libro#subir'
   get 'archivos/libro/listar/autores/:libro_id' => 'archivos/libro#listar_autores'
   get 'archivos/libro/listar/categorias/:libro_id' => 'archivos/libro#listar_categorias'
+  get 'archivos/libro/listar/autores/:libro_id' => 'archivos/libro#listar_autores'
   post 'archivos/libro/guardar/categoria' => 'archivos/libro#guardar_categoria'
+  post 'archivos/libro/guardar/autor' => 'archivos/libro#guardar_autor'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'

@@ -250,4 +250,65 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def guardar_autor
+		rpta = nil
+		status = 200
+		data = JSON.parse(params[:data])
+		nuevos = data['nuevos']
+		editados = data['editados']
+		eliminados = data['eliminados']
+		libro_id = data['extra']['libro_id']
+		rpta = []
+		array_nuevos = []
+		error = false
+		execption = nil
+		DB_ARCHIVOS.transaction do
+			begin
+				if nuevos.length != 0
+					nuevos.each do |nuevo|
+						n = Archivos::LibroAutor.new(:libro_id => libro_id, :autor_id => nuevo['autor_id'])
+						n.save
+						t = {:temporal => nuevo['id'], :nuevo_id => n.id}
+						array_nuevos.push(t)
+					end
+				end
+				if editados.length != 0
+					editados.each do |editado|
+						e = Archivos::LibroAutor.where(:id => editado['id']).first
+						e.autor_id = editado['autor_id']
+						e.libro_id = editado['libro_id']
+						e.save
+					end
+				end
+				if eliminados.length != 0
+					eliminados.each do |eliminado|
+						Archivos::LibroAutor.where(:id => eliminado).delete
+					end
+				end
+			rescue Exception => e
+				Sequel::Rollback
+				error = true
+				execption = e
+			end
+		end
+		if error == false
+			rpta = {
+				:tipo_mensaje => 'success',
+				:mensaje => [
+					'Se ha registrado los cambios en las asociaciones de los autores al libro',
+					array_nuevos
+					]
+				}.to_json
+		else
+			status = 500
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en asociar los autores al libro',
+					execption.message]
+				}.to_json
+		end
+		render :plain => rpta, :status => status
+	end
 end

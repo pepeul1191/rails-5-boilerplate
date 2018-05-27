@@ -55,11 +55,18 @@ var archivosRouter = Backbone.Router.extend({
     this.libroDetalleViewInstance.extraData = {libro_id: "E"};
     this.libroDetalleViewInstance.context.titulo_modal = "Crear Libro";
     this.libroDetalleViewInstance.render();
+    //tabla de categoria libro
     this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
       this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar + "E";
     this.libroDetalleViewInstance.tablaCategoriaLibro.listar();
     this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
       this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar.slice(0, -1);
+    //tabla de autor libro
+    this.libroDetalleViewInstance.tablaAutorLibro.urlListar =
+      this.libroDetalleViewInstance.tablaAutorLibro.urlListar + "E";
+    this.libroDetalleViewInstance.tablaAutorLibro.listar();
+    this.libroDetalleViewInstance.tablaAutorLibro.urlListar =
+      this.libroDetalleViewInstance.tablaAutorLibro.urlListar.slice(0, -1);
   },
   libroEditar: function(libro_id) {
     $("#btnModal").click();
