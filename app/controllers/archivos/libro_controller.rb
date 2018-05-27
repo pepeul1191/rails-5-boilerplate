@@ -343,4 +343,22 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def obtener
+		rpta = nil
+		status = 200
+		begin
+			rpta = Archivos::Libro.where(:id => params[:libro_id]).first.to_json
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en obtener los datos del libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end

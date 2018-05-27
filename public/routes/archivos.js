@@ -74,13 +74,22 @@ var archivosRouter = Backbone.Router.extend({
       this.libroDetalleViewInstance = new LibroDetalleView(dataLibroDetalle);
     }
     this.libroDetalleViewInstance.set("libro_id", libro_id);
+    this.libroDetalleViewInstance.setModel();
     this.libroDetalleViewInstance.context.titulo_modal = "Editar Libro";
+    this.libroDetalleViewInstance.context.libro = this.libroDetalleViewInstance.model;
+    this.libroDetalleViewInstance.render();
+    //tabla de categoria libro
     this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
       this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar + libro_id;
     this.libroDetalleViewInstance.tablaCategoriaLibro.listar();
     this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar =
       this.libroDetalleViewInstance.tablaCategoriaLibro.urlListar.replace(libro_id, '');
-    this.libroDetalleViewInstance.render();
+    //tabla de autor libro
+    this.libroDetalleViewInstance.tablaAutorLibro.urlListar =
+      this.libroDetalleViewInstance.tablaAutorLibro.urlListar + libro_id;
+    this.libroDetalleViewInstance.tablaAutorLibro.listar();
+    this.libroDetalleViewInstance.tablaAutorLibro.urlListar =
+      this.libroDetalleViewInstance.tablaAutorLibro.urlListar.slice(0, -1);
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";

@@ -24,7 +24,7 @@ var dataLibroAutor = new TableView({
       collection: new AutoresCollection(),
       model: "Autor",
       mensajeError: "Ha ocurrido un error al buscar los autores",
-      keyModeloInput: "categoria_nombre",
+      keyModeloInput: "autor_nombre",
       keyModeloCelda: "autor_id",
     },
     filaBotones: {

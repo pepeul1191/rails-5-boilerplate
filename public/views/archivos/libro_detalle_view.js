@@ -52,6 +52,26 @@ var LibroDetalleView = ModalView.extend({
   subirLibro: function(){
     this.uploadLibro.subirFile();
   },
+  setModel: function(){
+    var viewInstance = this;
+    $.ajax({
+      type: "GET",
+      url: BASE_URL + "archivos/libro/obtener/" + viewInstance.get("libro_id"),
+      data: {csrfmiddlewaretoken: CSRF},
+      async: false,
+      success: function(data){
+        viewInstance.model = JSON.parse(data);
+      },
+      error: function(error){
+        $("#" + viewInstance.targetMensaje).removeClass("color-success");
+        $("#" + viewInstance.targetMensaje).removeClass("color-warning");
+        $("#" + viewInstance.targetMensaje).addClass("color-danger");
+        $("#" + viewInstance.targetMensaje).html("Error en obtener el libro a editar");
+        $("html, body").animate({ scrollTop: $("#" + viewInstance.targetMensaje).offset().top }, 1000);
+        console.log(error);
+      }
+    });
+  },
   guardarDetalleLibro: function(){
     var viewInstance = this;
     this.model.set("nombre", $("#txtNombre").val());

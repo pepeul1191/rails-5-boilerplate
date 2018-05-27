@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'archivos/libro/listar/autores/:libro_id' => 'archivos/libro#listar_autores'
   post 'archivos/libro/guardar/categoria' => 'archivos/libro#guardar_categoria'
   post 'archivos/libro/guardar/autor' => 'archivos/libro#guardar_autor'
+  get 'archivos/libro/obtener/:libro_id' => 'archivos/libro#obtener'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'
