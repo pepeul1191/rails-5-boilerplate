@@ -29,7 +29,7 @@ class Archivos::ViewController < ApplicationController
             },
           ],
         },{
-          :subtitulo => 'Libros',
+          :subtitulo => 'Tags',
           :items => [
             {
               :item => 'Gestión de Autores',
@@ -39,14 +39,14 @@ class Archivos::ViewController < ApplicationController
               :item => 'Gestión de Categorías',
               :url => 'archivos/#/categoria',
             },
+          ],
+        },{
+          :subtitulo => 'Archivos',
+          :items => [
             {
               :item => 'Gestión de Libros',
               :url => 'archivos/#/libro',
             },
-          ],
-        },{
-          :subtitulo => 'Videos',
-          :items => [
             {
               :item => 'Gestión de Videos',
               :url => 'archivos/#/video',
