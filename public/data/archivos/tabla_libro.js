@@ -17,22 +17,27 @@ var dataTablaLibro = {
       edicion: false,
     },
     nombre: { // llave de REST
-      tipo: "text",
+      tipo: "label",
       estilos: "width: 200px;",
       edicion: true,
     },
     paginas: { // llave de REST
-      tipo: "text",
+      tipo: "label",
+      estilos: "width: 60px;",
+      edicion: true,
+    },
+    anio: { // llave de REST
+      tipo: "label",
       estilos: "width: 60px;",
       edicion: true,
     },
     autores: { // llave de REST
-      tipo: "text",
+      tipo: "label",
       estilos: "width: 200px;",
       edicion: true,
     },
     categorias: { // llave de REST
-      tipo: "text",
+      tipo: "label",
       estilos: "width: 200px;",
       edicion: true,
     },

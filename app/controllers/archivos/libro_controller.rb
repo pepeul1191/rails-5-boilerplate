@@ -123,13 +123,14 @@ class Archivos::LibroController < ApplicationController
 			page = data['page']
 			inicio = (page - 1) * step
 			#rpta = Archivos::Libro.select(:id, :nombre, :paginas).order(:id).limit(step, inicio).to_a.to_json
-			libros = Archivos::Libro.select(:id, :nombre, :paginas).order(:id).limit(step, inicio).to_a
+			libros = Archivos::Libro.select(:id, :nombre, :paginas, :anio).order(:id).limit(step, inicio).to_a
 			rpta = []
 			libros.each do |libro|
 				temp = Hash.new
 				temp[:id] = libro.id
 				temp[:nombre] = libro.nombre
 				temp[:paginas] = libro.paginas
+				temp[:anio] = libro.anio
 				temp[:autores] = ''
 				temp[:categorias] = ''
 				k = 0
@@ -190,7 +191,7 @@ class Archivos::LibroController < ApplicationController
 		rpta = nil
 		status = 200
 		begin
-			rpta = Archivos::VWLibroCategoria.select(:libro_id, :categoria_id, :categoria_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
+			rpta = Archivos::VWLibroCategoria.select(:id, :libro_id, :categoria_id, :categoria_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
 		rescue Exception => e
 			rpta = {
 				:tipo_mensaje => 'error',
@@ -230,7 +231,7 @@ class Archivos::LibroController < ApplicationController
 					editados.each do |editado|
 						e = Archivos::LibroCategoria.where(:id => editado['id']).first
 						e.categoria_id = editado['categoria_id']
-						e.libro_id = editado['libro_id']
+						e.libro_id = libro_id
 						e.save
 					end
 				end
@@ -269,7 +270,7 @@ class Archivos::LibroController < ApplicationController
 		rpta = nil
 		status = 200
 		begin
-			rpta = Archivos::VWLibroAutor.select(:autor_id, :autor_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
+			rpta = Archivos::VWLibroAutor.select(:id, :autor_id, :autor_nombre).where(:libro_id => params[:libro_id]).all().to_a.to_json
 		rescue Exception => e
 			rpta = {
 				:tipo_mensaje => 'error',
@@ -309,7 +310,7 @@ class Archivos::LibroController < ApplicationController
 					editados.each do |editado|
 						e = Archivos::LibroAutor.where(:id => editado['id']).first
 						e.autor_id = editado['autor_id']
-						e.libro_id = editado['libro_id']
+						e.libro_id = libro_id
 						e.save
 					end
 				end
