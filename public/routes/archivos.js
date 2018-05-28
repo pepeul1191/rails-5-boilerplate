@@ -14,6 +14,7 @@ var archivosRouter = Backbone.Router.extend({
     "libro": "libro",
     "libro/crear": "libroCrear",
     "libro/editar/:libro_id": "libroEditar",
+    "libro/ver/:libro_id": "libroVer",
     "*actions" : "default",
   },
   index: function(){
@@ -91,6 +92,13 @@ var archivosRouter = Backbone.Router.extend({
     this.libroDetalleViewInstance.tablaAutorLibro.listar();
     this.libroDetalleViewInstance.tablaAutorLibro.urlListar =
       this.libroDetalleViewInstance.tablaAutorLibro.urlListar.slice(0, -1);
+  },
+  libroVer: function(libro_id) {
+    if(this.libroViewInstance == null){
+      this.libroViewInstance = new LibroView();
+    }
+    this.libroViewInstance.tabLibro(libro_id);
+    location.replace(BASE_URL + "archivos/#/libro");
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";

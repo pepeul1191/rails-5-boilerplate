@@ -75,9 +75,20 @@ Tipos de Datos de Columnas
 + :decimal=>BigDecimal
 + :blob=>Sequel::SQL::Blob
 
+Si se presenta el siguiente error:
+
+  > $ FATAL: Listen error: unable to monitor directories for changes.
+
+---
+
+Se corrige con el siguiente código:
+
+  $ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+
 ---
 
 Fuentes:
 
 + https://github.com/pepeul1191/rails-pp-mono
 + https://github.com/pepeul1191/ruby-gestion.git
++ https://stackoverflow.com/questions/42225677/listen-error-unable-to-monitor-directories-for-changes?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa

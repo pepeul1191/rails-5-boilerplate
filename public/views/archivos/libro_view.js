@@ -32,6 +32,26 @@ var LibroView = Backbone.View.extend({
 		});
 		return template_compiled;
 	},
+	tabLibro:function(libro_id){
+		var url = null;
+		$.ajax({
+			url: BASE_URL + 'archivos/libro/ruta/' +  libro_id,
+			type: "GET",
+			async: false,
+			success: function(ruta) {
+				url = ruta;
+			},
+      error: function(error) {
+        console.log(error);
+				$("#mensajeRptaLibro").removeClass("color-success");
+        $("#mensajeRptaLibro").removeClass("color-warning");
+        $("#mensajeRptaLibro").addClass("color-danger");
+        $("#mensajeRptaLibro").html("Error en mostrar el libro en una nueva pestaña del navegador");
+      }
+		});
+		console.log(url);
+		window.open(url, '_blank');
+	},
 	mostrarTabla: function(){
 		this.tabla.listar();
 	},
