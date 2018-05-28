@@ -406,4 +406,23 @@ class Archivos::LibroController < ApplicationController
 		end
 		render :plain => rpta, :status => status
 	end
+
+	def ruta
+		rpta = nil
+		status = 200
+		begin
+			temp = Archivos::VWLibroArchivo.where(:id => params[:libro_id]).first
+			rpta = CONSTANTS[:BASE_URL] + temp.libro_ruta
+		rescue Exception => e
+			rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error en mostrar el libro',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+		render :plain => rpta, :status => status
+	end
 end
