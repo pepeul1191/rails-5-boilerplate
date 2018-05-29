@@ -33,7 +33,36 @@ var VideoView = Backbone.View.extend({
 		return template_compiled;
 	},
 	mostrarVideo:function(video_id){
-		alert(video_id);
+		var url = null;
+		$.ajax({
+			url: BASE_URL + 'archivos/video/ruta/' +  video_id,
+			type: "GET",
+			async: false,
+			success: function(ruta) {
+				url = ruta;
+			},
+      error: function(error) {
+        console.log(error);
+				$("#mensajeRptaVideo").removeClass("color-success");
+        $("#mensajeRptaVideo").removeClass("color-warning");
+        $("#mensajeRptaVideo").addClass("color-danger");
+        $("#mensajeRptaVideo").html("Error en mostrar el libro en una nueva pestaña del navegador");
+      }
+		});
+		var data = {titulo_modal: "Ver Video", url_video: url};
+		var template_compiled = null;
+		$.ajax({
+			 url: STATICS_URL + 'templates/archivos/video_ver.html',
+			 type: "GET",
+			 async: false,
+			 success: function(html_string) {
+				document.getElementById("modal-container").innerHTML = html_string;
+				var source = document.getElementById("video-ver-template").innerHTML;
+				var template = Handlebars.compile(source);
+				var html = template(data);
+				document.getElementById("modal-container").innerHTML = html;
+			 }
+		});
 	},
 	mostrarTabla: function(){
 		this.tabla.listar();

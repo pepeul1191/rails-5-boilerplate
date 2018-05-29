@@ -145,7 +145,6 @@ var archivosRouter = Backbone.Router.extend({
     this.videoDetalleViewInstance.context.BASE_URL = BASE_URL;
     this.videoDetalleViewInstance.context.video = this.videoDetalleViewInstance.model.toJSON();
     this.videoDetalleViewInstance.render();
-    console.log(this.videoDetalleViewInstance.model);
     // modelo de upload
     var archivo_id = this.videoDetalleViewInstance.model.get("archivo_id");
     var nombre_video = this.videoDetalleViewInstance.model.get("video_nombre");
@@ -167,10 +166,11 @@ var archivosRouter = Backbone.Router.extend({
       this.videoDetalleViewInstance.tablaAutorVideo.urlListar.slice(0, -1);
   },
   videoVer: function(video_id) {
+    $("#btnModal").click();
     if(this.videoViewInstance == null){
       this.videoViewInstance = new VideoView();
     }
-    this.videoViewInstance.tabVideo(video_id);
+    this.videoViewInstance.mostrarVideo(video_id);
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";

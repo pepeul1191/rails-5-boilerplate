@@ -14,7 +14,7 @@ module ArchivosHelper
       ]
     else
       rpta = [
-        'dist/home.min',
+        'dist/archivos.min',
       ]
     end
     rpta
@@ -69,7 +69,7 @@ module ArchivosHelper
       ]
     else
       rpta = [
-        'dist/home.min',
+        'dist/archivos.min',
       ]
     end
     rpta

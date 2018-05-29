@@ -57,7 +57,7 @@ Rails.application.routes.draw do
   post 'archivos/video/guardar/categoria' => 'archivos/video#guardar_categoria'
   post 'archivos/video/guardar/autor' => 'archivos/video#guardar_autor'
   get 'archivos/video/obtener/:video_id' => 'archivos/video#obtener'
-  get 'archivos/video/ruta/:video_id' => 'archivos/libro#ruta'
+  get 'archivos/video/ruta/:video_id' => 'archivos/video#ruta'
   # errores
   get 'error/access/:id' => 'error#access'
   #get '*unmatched_route' => 'application#not_found'

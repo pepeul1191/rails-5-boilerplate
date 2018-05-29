@@ -116,3 +116,5 @@ Fuentes:
 + https://github.com/pepeul1191/rails-pp-mono
 + https://github.com/pepeul1191/ruby-gestion.git
 + https://stackoverflow.com/questions/42225677/listen-error-unable-to-monitor-directories-for-changes?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
++ https://handlebarsjs.com/
++ http://videojs.com/getting-started/

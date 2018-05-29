@@ -25,6 +25,7 @@
   "dependencies": {
     "font-awesome": "^4.7.0",
     "swp-backbone": "*",
-    "requirejs": "^2.3.5"
+    "requirejs": "^2.3.5",
+    "video.js": "^7.0.3"
   }
 }
