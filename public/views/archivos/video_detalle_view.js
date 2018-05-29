@@ -111,6 +111,7 @@ var VideoDetalleView = ModalView.extend({
   guardarDetalleVideoArchivo: function(){
     var viewInstance = this;
     this.model.set("archivo_id", this.uploadVideo.model.id);
+    this.model.set("nombre", $("#txtNombreArchivo").val());
     $.ajax({
       type: "POST",
       url: BASE_URL + "archivos/video/guardar_archivo",

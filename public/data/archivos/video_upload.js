@@ -17,7 +17,7 @@ var dataVideoUpload = {
   extraData: [
     {"llave": "nombre", "domId": "txtNombreArchivo"},
   ],
-  maxSize: 3545850, //bytes
-  allowTypes: ["application/pdf"],
+  maxSize: 35458500000, //bytes
+  allowTypes: ["video/mp4"],
   model: new Archivo(),
 };

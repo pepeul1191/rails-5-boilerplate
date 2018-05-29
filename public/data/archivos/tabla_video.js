@@ -21,7 +21,7 @@ var dataTablaVideo = {
       estilos: "width: 200px;",
       edicion: true,
     },
-    paginas: { // llave de REST
+    duracion: { // llave de REST
       tipo: "label",
       estilos: "width: 60px;",
       edicion: true,

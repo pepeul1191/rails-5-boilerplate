@@ -32,25 +32,8 @@ var VideoView = Backbone.View.extend({
 		});
 		return template_compiled;
 	},
-	tabVideo:function(video_id){
-		var url = null;
-		$.ajax({
-			url: BASE_URL + 'archivos/video/ruta/' +  video_id,
-			type: "GET",
-			async: false,
-			success: function(ruta) {
-				url = ruta;
-			},
-      error: function(error) {
-        console.log(error);
-				$("#mensajeRptaVideo").removeClass("color-success");
-        $("#mensajeRptaVideo").removeClass("color-warning");
-        $("#mensajeRptaVideo").addClass("color-danger");
-        $("#mensajeRptaVideo").html("Error en mostrar el video en una nueva pestaña del navegador");
-      }
-		});
-		console.log(url);
-		window.open(url, '_blank');
+	mostrarVideo:function(video_id){
+		alert(video_id);
 	},
 	mostrarTabla: function(){
 		this.tabla.listar();

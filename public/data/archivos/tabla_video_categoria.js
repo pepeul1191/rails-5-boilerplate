@@ -8,7 +8,7 @@ var dataVideoCategoria = new TableView({
     success: "Se cargado guardo las asociaciones a las videos",
   },
   //urlListar: BASE_URL + "distrito/listar/" + provinciaId,
-  urlGuardar: BASE_URL + "archivos/video/guardar/video",
+  urlGuardar: BASE_URL + "archivos/video/guardar/categoria",
   urlListar: BASE_URL + "archivos/video/listar/categorias/",
   fila: {
     id: { // llave de REST
@@ -16,16 +16,16 @@ var dataVideoCategoria = new TableView({
       estilos: "color: blue; display:none",
       edicion: false,
     },
-    video_id: { // llave de REST
+    categoria_id: { // llave de REST
       tipo: "autocomplete",
       estilos: "width: 200px;",
       edicion: true,
-      url: BASE_URL + "archivos/video/buscar",
+      url: BASE_URL + "archivos/categoria/buscar",
       collection: new CategoriasCollection(),
       model: "Categoria",
       mensajeError: "Ha ocurrido un error al buscar las videos",
-      keyModeloInput: "video_nombre",
-      keyModeloCelda: "video_id",
+      keyModeloInput: "categoria_nombre",
+      keyModeloCelda: "categoria_id",
     },
     filaBotones: {
       estilos: "width: 80px"

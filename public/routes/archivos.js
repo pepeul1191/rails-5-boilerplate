@@ -4,6 +4,8 @@ var archivosRouter = Backbone.Router.extend({
   categoriaViewInstance: null,
   libroViewInstance: null,
   libroDetalleViewInstance: null,
+  videoViewInstance: null,
+  videoDetalleViewInstance: null,
   initialize: function() {
   },
   routes: {
@@ -143,6 +145,14 @@ var archivosRouter = Backbone.Router.extend({
     this.videoDetalleViewInstance.context.BASE_URL = BASE_URL;
     this.videoDetalleViewInstance.context.video = this.videoDetalleViewInstance.model.toJSON();
     this.videoDetalleViewInstance.render();
+    console.log(this.videoDetalleViewInstance.model);
+    // modelo de upload
+    var archivo_id = this.videoDetalleViewInstance.model.get("archivo_id");
+    var nombre_video = this.videoDetalleViewInstance.model.get("video_nombre");
+    var ruta_video = this.videoDetalleViewInstance.model.get("video_ruta");
+    this.videoDetalleViewInstance.uploadVideo.model.set("id", archivo_id);
+    this.videoDetalleViewInstance.uploadVideo.model.set("nombre", nombre_video);
+    this.videoDetalleViewInstance.uploadVideo.model.set("ruta", ruta_video);
     //tabla de categoria video
     this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar =
       this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar + video_id;
@@ -161,7 +171,6 @@ var archivosRouter = Backbone.Router.extend({
       this.videoViewInstance = new VideoView();
     }
     this.videoViewInstance.tabVideo(video_id);
-    location.replace(BASE_URL + "archivos/#/video");
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";

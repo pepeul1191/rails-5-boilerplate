@@ -6,7 +6,7 @@ class Archivos::VideoController < ApplicationController
 		data = JSON.parse(params[:data])
 		begin
 			if data['id'] == 'E'
-				video = Archivos::Video.new(:nombre => data['nombre'], :duracion => data['duracion'])
+				video = Archivos::Video.new(:nombre => data['nombre'], :duracion => data['duracion'], :anio => data['anio'])
 				video.save
 				rpta = {
 					:tipo_mensaje => 'success',
@@ -130,11 +130,10 @@ class Archivos::VideoController < ApplicationController
 				temp[:id] = video.id
 				temp[:nombre] = video.nombre
 				temp[:duracion] = video.duracion
-				#temp[:anio] = video.anio
+				temp[:anio] = video.anio
 				temp[:autores] = ''
 				temp[:categorias] = ''
 				k = 0
-
 				autores = Archivos::VWVideoAutor.select(:autor_nombre).where(:video_id => video.id).to_a
         puts autores
 				autores.each do |autor|
@@ -147,7 +146,6 @@ class Archivos::VideoController < ApplicationController
 					k = k + 1
 				end
 				k = 0
-
 				categorias = Archivos::VWVideoCategoria.select(:categoria_nombre).where(:video_id => video.id).to_a
 				categorias.each do |categoria|
 					if k == 0
