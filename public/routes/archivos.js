@@ -15,6 +15,10 @@ var archivosRouter = Backbone.Router.extend({
     "libro/crear": "libroCrear",
     "libro/editar/:libro_id": "libroEditar",
     "libro/ver/:libro_id": "libroVer",
+    "video": "video",
+    "video/crear": "videoCrear",
+    "video/editar/:video_id": "videoEditar",
+    "video/ver/:video_id": "videoVer",
     "*actions" : "default",
   },
   index: function(){
@@ -99,6 +103,65 @@ var archivosRouter = Backbone.Router.extend({
     }
     this.libroViewInstance.tabLibro(libro_id);
     location.replace(BASE_URL + "archivos/#/libro");
+  },
+  video: function() {
+    if(this.videoViewInstance == null){
+      this.videoViewInstance = new VideoView();
+    }
+    this.videoViewInstance.render();
+    this.videoViewInstance.tablaVideo.listar();
+  },
+  videoCrear: function() {
+    $("#btnModal").click();
+    if(this.videoDetalleViewInstance == null){
+      this.videoDetalleViewInstance = new VideoDetalleView(dataVideoDetalle);
+    }
+    this.videoDetalleViewInstance.extraData = {video_id: "E"};
+    this.videoDetalleViewInstance.context.titulo_modal = "Crear Video";
+    this.videoDetalleViewInstance.render();
+    //tabla de categoria video
+    this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar =
+      this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar + "E";
+    this.videoDetalleViewInstance.tablaCategoriaVideo.listar();
+    this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar =
+      this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar.slice(0, -1);
+    //tabla de autor video
+    this.videoDetalleViewInstance.tablaAutorVideo.urlListar =
+      this.videoDetalleViewInstance.tablaAutorVideo.urlListar + "E";
+    this.videoDetalleViewInstance.tablaAutorVideo.listar();
+    this.videoDetalleViewInstance.tablaAutorVideo.urlListar =
+      this.videoDetalleViewInstance.tablaAutorVideo.urlListar.slice(0, -1);
+  },
+  videoEditar: function(video_id) {
+    $("#btnModal").click();
+    if(this.videoDetalleViewInstance == null){
+      this.videoDetalleViewInstance = new VideoDetalleView(dataVideoDetalle);
+    }
+    this.videoDetalleViewInstance.set("video_id", video_id);
+    this.videoDetalleViewInstance.setModel();
+    this.videoDetalleViewInstance.context.titulo_modal = "Editar Video";
+    this.videoDetalleViewInstance.context.BASE_URL = BASE_URL;
+    this.videoDetalleViewInstance.context.video = this.videoDetalleViewInstance.model.toJSON();
+    this.videoDetalleViewInstance.render();
+    //tabla de categoria video
+    this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar =
+      this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar + video_id;
+    this.videoDetalleViewInstance.tablaCategoriaVideo.listar();
+    this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar =
+      this.videoDetalleViewInstance.tablaCategoriaVideo.urlListar.replace(video_id, '');
+    //tabla de autor video
+    this.videoDetalleViewInstance.tablaAutorVideo.urlListar =
+      this.videoDetalleViewInstance.tablaAutorVideo.urlListar + video_id;
+    this.videoDetalleViewInstance.tablaAutorVideo.listar();
+    this.videoDetalleViewInstance.tablaAutorVideo.urlListar =
+      this.videoDetalleViewInstance.tablaAutorVideo.urlListar.slice(0, -1);
+  },
+  videoVer: function(video_id) {
+    if(this.videoViewInstance == null){
+      this.videoViewInstance = new VideoView();
+    }
+    this.videoViewInstance.tabVideo(video_id);
+    location.replace(BASE_URL + "archivos/#/video");
   },
   default: function() {
     //window.location.href = BASE_URL + "error/access/404";

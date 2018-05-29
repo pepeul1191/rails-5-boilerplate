@@ -37,7 +37,7 @@ Crear Vista de distrito/provincia/departamento
 
     >> DROP VIEW IF EXISTS vw_libros_categorias;
     CREATE VIEW vw_libros_categorias AS SELECT
-    C.id AS categoria_id, C.nombre AS categoria_nombre,  L.id AS libro_id, L.nombre as libro_nombre FROM
+    LC.id, C.id AS categoria_id, C.nombre AS categoria_nombre,  L.id AS libro_id, L.nombre as libro_nombre FROM
     libros_categorias LC
     INNER JOIN categorias C ON C.id = LC.categoria_id  
     INNER JOIN libros L ON  LC.libro_id = L.id
@@ -45,7 +45,7 @@ Crear Vista de distrito/provincia/departamento
 
     >> DROP VIEW IF EXISTS vw_libros_autores;
     CREATE VIEW vw_libros_autores AS SELECT
-    A.id AS autor_id, A.nombre AS autor_nombre, L.id AS libro_id, L.nombre as libro_nombre FROM
+    LA.id, A.id AS autor_id, A.nombre AS autor_nombre, L.id AS libro_id, L.nombre as libro_nombre FROM
     libros_autores LA
     INNER JOIN autores A ON A.id = LA.autor_id  
     INNER JOIN libros L ON  LA.libro_id = L.id
@@ -61,18 +61,18 @@ Crear Vista de distrito/provincia/departamento
 
     >> DROP VIEW IF EXISTS vw_videos_categorias;
     CREATE VIEW vw_videos_categorias AS SELECT
-    C.id AS categoria_id, C.nombre AS categoria_nombre, V.id AS video_id, V.nombre as video_nombre FROM
-    videos_categorias LC
-    INNER JOIN categorias C ON C.id = LC.categoria_id  
-    INNER JOIN videos V ON  LC.video_id = V.id
+    VC.id, C.id AS categoria_id, C.nombre AS categoria_nombre, V.id AS video_id, V.nombre as video_nombre FROM
+    videos_categorias VC
+    INNER JOIN categorias C ON C.id = VC.categoria_id  
+    INNER JOIN videos V ON  VC.video_id = V.id
     LIMIT 2000;
 
     >> DROP VIEW IF EXISTS vw_videos_autores;
     CREATE VIEW vw_videos_autores AS SELECT
-    A.id AS autor_id, A.nombre AS autor_nombre, V.id AS libro_id, V.nombre as libro_nombre FROM
-    videos_autores LA
-    INNER JOIN autores A ON A.id = LA.autor_id  
-    INNER JOIN videos V ON  LA.libro_id = V.id
+    VA.id AS id, A.id AS autor_id, A.nombre AS autor_nombre, V.id AS video_id, V.nombre as video_nombre FROM
+    videos_autores VA
+    INNER JOIN autores A ON A.id = VA.autor_id  
+    INNER JOIN videos V ON  VA.video_id = V.id
     LIMIT 2000;
 
     >> DROP VIEW IF EXISTS vw_videos_archivos;
