@@ -59,9 +59,33 @@ Crear Vista de distrito/provincia/departamento
     INNER JOIN extensiones E ON A.extension_id = E.id  
     LIMIT 2000;
 
+    >> DROP VIEW IF EXISTS vw_videos_categorias;
+    CREATE VIEW vw_videos_categorias AS SELECT
+    C.id AS categoria_id, C.nombre AS categoria_nombre, V.id AS video_id, V.nombre as video_nombre FROM
+    videos_categorias LC
+    INNER JOIN categorias C ON C.id = LC.categoria_id  
+    INNER JOIN videos V ON  LC.video_id = V.id
+    LIMIT 2000;
+
+    >> DROP VIEW IF EXISTS vw_videos_autores;
+    CREATE VIEW vw_videos_autores AS SELECT
+    A.id AS autor_id, A.nombre AS autor_nombre, V.id AS libro_id, V.nombre as libro_nombre FROM
+    videos_autores LA
+    INNER JOIN autores A ON A.id = LA.autor_id  
+    INNER JOIN videos V ON  LA.libro_id = V.id
+    LIMIT 2000;
+
+    >> DROP VIEW IF EXISTS vw_videos_archivos;
+    CREATE VIEW vw_videos_archivos AS SELECT
+    V.id, V.nombre, V.anio, V.paginas, V.archivo_id, A.nombre as libro_nombre, A.ruta || A.nombre || '.' || E.nombre AS video_ruta FROM
+    videos V
+    INNER JOIN archivos A ON A.id = V.archivo_id  
+    INNER JOIN extensiones E ON A.extension_id = E.id  
+    LIMIT 2000;
+
 Crear migración de archivos:
 
-    $ sequel -m db/migrations_archivos -M 7 sqlite://db/archivos.db
+    $ sequel -m db/migrations_archivos -M 11 sqlite://db/archivos.db
 
 Tipos de Datos de Columnas
 
