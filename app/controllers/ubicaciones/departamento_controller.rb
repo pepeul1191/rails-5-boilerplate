@@ -1,5 +1,6 @@
 class Ubicaciones::DepartamentoController < ApplicationController
 	#protect_from_forgery except: :listar
+	before_action :validate_csrf
 	def listar
 		rpta = nil
 		status = 200

@@ -60,6 +60,6 @@ Rails.application.routes.draw do
   get 'archivos/video/ruta/:video_id' => 'archivos/video#ruta'
   # errores
   get 'error/access/:id' => 'error#access'
-  #get '*unmatched_route' => 'application#not_found'
+  get '*unmatched_route' => 'application#not_found'
   post '*unmatched_route' => 'application#not_found'
 end

@@ -13,7 +13,8 @@
       var MODULOS_JSON = JSON.parse('<%=raw @locals[:modulos]%>');
       var ITEMS_JSON = JSON.parse('<%=raw @locals[:items]%>');
       var DATA = JSON.parse('<%=raw @locals[:data]%>');
-      var CSRF = "<%=CONSTANTS[:CSRF]%>";
+      var CSRF = "<%=CONSTANTS[:CSRF][:secret]%>";
+      var CSRF_KEY = "<%=CONSTANTS[:CSRF][:key]%>";
     </script>
     <%= load_css %>
   </head>

@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :set_header
-  before_action :validate_csrf_token
   skip_before_action :verify_authenticity_token
 
   def not_found
@@ -23,11 +22,19 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def validate_csrf_token
-    if request.method == 'POST'
-      #if request.params[:csrfretoken] != CONSTANTS[:CSRF] && CONSTANTS[:ambiente] != 'produccion'
-        #render :plain => {:tipo_mensaje => 'error', :mensaje => ['CSRF token error', 'CSRF token error']}.to_json, status: 500
-      #end
+  def validate_csrf
+    if CONSTANTS[:ambiente_csrf] == 'activo'
+      if request.headers[CONSTANTS[:CSRF][:key]] != CONSTANTS[:CSRF][:secret]
+        rpta = {
+  				:tipo_mensaje => 'error',
+  				:mensaje => [
+  					'No se puede acceder al recurso',
+  					'CSRF Token error'
+  				]
+  			}.to_json
+  			status = 500
+        render :plain => rpta, :status => status
+      end
     end
   end
 
