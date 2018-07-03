@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'accesos' => 'accesos/view#index'
   get 'sistema/listar' => 'accesos/sistema#listar'
   post 'sistema/guardar' => 'accesos/sistema#guardar'
+  get 'modulo/listar/:sistema_id' => 'accesos/modulo#listar'
+  post 'modulo/guardar' => 'accesos/modulo#guardar'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
