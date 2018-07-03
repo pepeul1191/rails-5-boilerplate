@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root 'home#index'
   # login y sessiones
   get 'login' => 'login#index'
+  post 'login/acceder' => 'login#acceder'
+  get 'login/cerrar' => 'login#cerrar'
+  get 'login/ver' => 'login#ver'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'

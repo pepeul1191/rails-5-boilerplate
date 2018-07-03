@@ -5,10 +5,11 @@ CONSTANTS = {
     :secret => 'mpt/sr6eS2AlCRHU7DVThMgFTN08pnfSDf/C94eZx7udfm0lvgaYWLYJttYPKzGKDTlXwVU/d2FOxbKkgNlsTw==',
     :key => 'Csrf-Val',
   },
+  :sistema_id => 1,
   :ambiente => 'desarrollo',
   :ambiente_static => 'desarrollo',
   :ambiente_csrf  => 'activo',
-  :ambiente_session => 'inactivo',
+  :ambiente_session => 'activo',
   :key => 'Fdp6CVxpri1ga8kH',
   :servicios => {
     :accesos => {

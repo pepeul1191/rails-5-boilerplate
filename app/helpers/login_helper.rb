@@ -23,7 +23,6 @@ module LoginHelper
       rpta = [
         'bower_components/jquery/dist/jquery.min',
         'bower_components/bootstrap/dist/js/bootstrap.min',
-        'assets/js/login',
       ]
     else
       rpta = [

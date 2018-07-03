@@ -22,6 +22,15 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def set_header
+    response.set_header('server', 'ruby, Ubuntu')
+    #response.set_header('Access-Control-Allow-Origin', '*')
+    #response.set_header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, OPTIONS')
+    #response.set_header('Access-Control-Request-Method', '*')
+    #response.set_header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+  end
+
+  private
   def validate_csrf
     if CONSTANTS[:ambiente_csrf] == 'activo'
       if request.headers[CONSTANTS[:CSRF][:key]] != CONSTANTS[:CSRF][:secret]
@@ -39,11 +48,19 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def set_header
-    response.set_header('server', 'ruby, Ubuntu')
-    #response.set_header('Access-Control-Allow-Origin', '*')
-    #response.set_header('Access-Control-Allow-Methods', 'POST, PUT, DELETE, GET, OPTIONS')
-    #response.set_header('Access-Control-Request-Method', '*')
-    #response.set_header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization')
+  def session_true
+    if CONSTANTS[:ambiente_session] == 'activo'
+      if request.headers[CONSTANTS[:CSRF][:key]] != CONSTANTS[:CSRF][:secret]
+        rpta = {
+  				:tipo_mensaje => 'error',
+  				:mensaje => [
+  					'No se puede acceder al recurso',
+  					'CSRF Token error'
+  				]
+  			}.to_json
+  			status = 500
+        render :plain => rpta, :status => status
+      end
+    end
   end
 end
