@@ -8,6 +8,7 @@ class Ubicaciones::ViewController < ApplicationController
       :modulos => MenuHelper::menu_modulos(),
   		:items => MenuHelper::menu_items('Maestros'),
   		:js_bottom => 'dist/agricultores.min.js',
+      :static_url => CONSTANTS[:STATIC_URL],
   		:data => {
   			:mensaje => false,
   			:titulo_pagina => 'Gestión de Agricultores',

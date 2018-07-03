@@ -12,7 +12,7 @@ CONSTANTS = {
   :ambiente_session => 'activo',
   :key => 'Fdp6CVxpri1ga8kH',
   :static => {
-    :accesos => 'http://localhost:9090',
+    :accesos => 'http://localhost:9090/',
     :archivos => '',
   },
   :servicios => {

@@ -8,6 +8,7 @@ class Accesos::ViewController < ApplicationController
       :modulos => MenuHelper::menu_modulos(),
   		:items => MenuHelper::menu_items('Accesos'),
   		:js_bottom => 'dist/agricultores.min.js',
+      :static_url => CONSTANTS[:static][:accesos],
   		:data => {
   			:mensaje => false,
   			:titulo_pagina => 'Gestión de Accesos',

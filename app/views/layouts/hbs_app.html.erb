@@ -9,7 +9,7 @@
     <title><%=@locals[:title]%></title>
     <script type="text/javascript">
       var BASE_URL = "<%=CONSTANTS[:BASE_URL]%>";
-      var STATICS_URL  = "<%=CONSTANTS[:STATIC_URL]%>";
+      var STATICS_URL  = "<%=@locals[:static_url]%>";
       var MODULOS_JSON = JSON.parse('<%=raw @locals[:modulos]%>');
       var ITEMS_JSON = JSON.parse('<%=raw @locals[:items]%>');
       var DATA = JSON.parse('<%=raw @locals[:data]%>');
