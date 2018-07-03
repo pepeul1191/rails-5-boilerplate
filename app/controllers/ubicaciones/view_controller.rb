@@ -5,35 +5,8 @@ class Ubicaciones::ViewController < ApplicationController
       :title => 'Ubicaciones',
       :css => UbicacionesHelper::index_css,
       :js => UbicacionesHelper::index_js,
-      :modulos => [
-        {
-          :url => 'accesos/',
-          :nombre => 'Accesos',
-        },
-        {
-          :url => 'maestros/',
-          :nombre => 'Maestros',
-        },
-        {
-          :url => 'archivos/',
-          :nombre => 'Archivos',
-        },
-      ].to_json,
-  		:items => [
-        {
-          :subtitulo => 'Maestros',
-          :items => [
-            {
-              :item => 'Gestión de Ubicaciones',
-              :url => 'maestros/#/ubicacion',
-            },
-            {
-              :item => 'Gestión de Extensiones',
-              :url => 'maestros/#/extension',
-            },
-          ],
-        },
-      ].to_json,
+      :modulos => MenuHelper::menu_modulos(),
+  		:items => MenuHelper::menu_items('Maestros'),
   		:js_bottom => 'dist/agricultores.min.js',
   		:data => {
   			:mensaje => false,
