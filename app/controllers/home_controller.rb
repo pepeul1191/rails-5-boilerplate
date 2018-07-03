@@ -6,44 +6,13 @@ class HomeController < ApplicationController
       :title => 'Home',
       :css => HomeHelper::index_css,
       :js => HomeHelper::index_js,
-      :modulos => [
-        {
-          :url => 'accesos/',
-          :nombre => 'Accesos',
-        },
-        {
-          :url => 'maestros/',
-          :nombre => 'Maestros',
-        },
-        {
-          :url => 'agricultores/',
-          :nombre => 'Agricultores',
-        },
-        {
-          :url => 'estaciones/',
-          :nombre => 'Estaciones',
-        },
-      ].to_json,
-  		:items => [
-        {
-          :subtitulo => 'Opciones',
-          :items => [
-            {
-              :item => 'Gestión de Responsables',
-              :url => 'agricultores/#/responsable',
-            },
-            {
-              :item => 'Gestión de Asociaciones',
-              :url => 'agricultores/#/asociacion',
-            },
-          ],
-        },
-      ].to_json,
+      :modulos => MenuHelper::menu_modulos(),
+  		:items => MenuHelper::menu_items('Accesos'),
   		:js_bottom => 'dist/agricultores.min.js',
   		:data => {
   			:mensaje => false,
   			:titulo_pagina => 'Gestión de Agricultores',
-  			:modulo => 'Agricultores',
+  			:modulo => 'Accesos',
   		}.to_json,
     }
     render template: 'home/index', layout: 'hbs_app'

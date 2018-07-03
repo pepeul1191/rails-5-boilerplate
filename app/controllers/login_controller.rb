@@ -74,7 +74,6 @@ class LoginController < ApplicationController
         render :template => 'login/index', :layout => 'blank', :status => 500
       end
 		rescue Exception => e
-      puts "EXECPTION"
       puts e
       @locals = {
         :title => 'Bienvenido',
@@ -88,8 +87,11 @@ class LoginController < ApplicationController
   end
 
   def ver
-    rpta = 'usuario : ' + session[:usuario] + '</br>' + 'estado : ' + session[:estado] + '</br>' + 'tiempo : ' + session[:tiempo]
-    render :plain => rpta
+    rpta = 'usuario : ' + session[:usuario] + '</br>' +
+      'estado : ' + session[:estado] + '</br>' +
+      'tiempo : ' + session[:tiempo] + '</br>' +
+      '<a style="margin-top:10px; display: block;width: 115px;height: 20px;background: #4E9CAF;padding: 10px;text-align: center;border-radius: 0px;color: white;font-weight: bold;" href="' + CONSTANTS[:BASE_URL] + 'login">Regresar</a>'
+    render :inline => rpta
   end
 
   def cerrar
