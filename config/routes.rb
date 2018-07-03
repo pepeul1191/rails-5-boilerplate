@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   post 'modulo/guardar' => 'accesos/modulo#guardar'
   get 'subtitulo/listar/:modulo_id' => 'accesos/subtitulo#listar'
   post 'subtitulo/guardar' => 'accesos/subtitulo#guardar'
+  get 'item/listar/:subtitulo_id' => 'accesos/item#listar'
+  post 'item/guardar' => 'accesos/item#guardar'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
