@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'usuario/listar' => 'accesos/usuario#listar'
   get 'usuario/obtener_usuario_correo/:usuario_id' => 'accesos/usuario#obtener_usuario_correo'
   post 'usuario/contrasenia_repetida' => 'accesos/usuario#contrasenia_repetida'
-  post 'usuario/nombre_repetido' => 'accesos/usuario#/nombre_repetido'
+  post 'usuario/nombre_repetido' => 'accesos/usuario#nombre_repetido'
 	post 'usuario/contrasenia_repetida' => 'accesos/usuario#contrasenia_repetida'
 	post 'usuario/correo_repetido' => 'accesos/usuario#correo_repetido'
 	post 'usuario/guardar_usuario_correo' => 'accesos/usuario#guardar_usuario_correo'
