@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'login/ver' => 'login#ver'
   # accesos
   get 'accesos' => 'accesos/view#index'
+  get 'sistema/listar' => 'accesos/sistema#listar'
+  post 'sistema/guardar' => 'accesos/sistema#guardar'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
