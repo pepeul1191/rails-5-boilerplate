@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   get 'rol/listar/:sistema_id' => 'accesos/rol#listar'
   post 'rol/guardar' => 'accesos/rol#guardar'
   get 'rol/permiso/listar/:sistema_id/:rol_id' => 'accesos/rol#listar_permiso'
-  post 'rol/permiso/guardar' => 'accesos/rol#guardar_permiso' 
+  post 'rol/permiso/guardar' => 'accesos/rol#guardar_permiso'
+  get 'usuario/listar' => 'accesos/usuario#listar'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
