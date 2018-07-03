@@ -1,7 +1,7 @@
 class LoginController < ApplicationController
   include LoginHelper
+  before_action :session_false_view, only: [:index, ]
   def index
-    
     @locals = {
       :title => 'Bienvenido',
       :hola => 'mundo',

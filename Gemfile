@@ -63,7 +63,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Gemas propias
 gem 'sequel'
-gem 'unirest'
 gem 'httparty'
-gem 'rest-client'
 gem 'json'

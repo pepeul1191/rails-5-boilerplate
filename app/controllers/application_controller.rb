@@ -48,14 +48,32 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def session_true
+  def session_true_view
     if CONSTANTS[:ambiente_session] == 'activo'
-      if request.headers[CONSTANTS[:CSRF][:key]] != CONSTANTS[:CSRF][:secret]
+      if session[:estado] != 'autenticado'
+        redirect_to CONSTANTS[:BASE_URL] + 'error/access/5051'
+      end
+    end
+  end
+
+  private
+  def session_false_view
+    if CONSTANTS[:ambiente_session] == 'activo'
+      if session[:estado] == 'autenticado'
+        redirect_to CONSTANTS[:BASE_URL]
+      end
+    end
+  end
+
+  private
+  def session_true_rest
+    if CONSTANTS[:ambiente_session] == 'activo'
+      if session[:estado] != 'autenticado'
         rpta = {
   				:tipo_mensaje => 'error',
   				:mensaje => [
   					'No se puede acceder al recurso',
-  					'CSRF Token error'
+  					'Necesita estar logueado'
   				]
   			}.to_json
   			status = 500

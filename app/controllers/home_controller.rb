@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   include LoginHelper
+  before_action :session_true_view, only: [:index, ]
   def index
     @locals = {
       :title => 'Home',
