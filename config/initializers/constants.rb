@@ -11,6 +11,10 @@ CONSTANTS = {
   :ambiente_csrf  => 'activo',
   :ambiente_session => 'activo',
   :key => 'Fdp6CVxpri1ga8kH',
+  :static => {
+    :accesos => 'http://localhost:9090',
+    :archivos => '',
+  },
   :servicios => {
     :accesos => {
       :url => 'http://localhost:4000/',

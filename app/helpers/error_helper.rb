@@ -3,15 +3,15 @@ module ErrorHelper
     rpta = nil
     if CONSTANTS[:ambiente] == 'desarrollo'
       rpta = [
-        'bower_components/bootstrap/dist/css/bootstrap.min',
-        'bower_components/font-awesome/css/font-awesome.min',
-        'assets/css/constants',
-        'assets/css/error',
-        'assets/css/errorsh',
+        CONSTANTS[:BASE_URL] + 'bower_components/bootstrap/dist/css/bootstrap.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/font-awesome/css/font-awesome.min',
+        CONSTANTS[:BASE_URL] + 'assets/css/constants',
+        CONSTANTS[:BASE_URL] + 'assets/css/error',
+        CONSTANTS[:BASE_URL] + 'assets/css/errorsh',
       ]
     else
       rpta = [
-        'dist/error.min',
+        CONSTANTS[:BASE_URL] + 'dist/error.min',
       ]
     end
     rpta
@@ -21,12 +21,12 @@ module ErrorHelper
     rpta = nil
     if CONSTANTS[:ambiente] == 'desarrollo'
       rpta = [
-        'bower_components/jquery/dist/jquery.min',
-        'bower_components/bootstrap/dist/js/bootstrap.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/jquery/dist/jquery.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/bootstrap/dist/js/bootstrap.min',
       ]
     else
       rpta = [
-        'dist/error.min',
+        CONSTANTS[:BASE_URL] + 'dist/error.min',
       ]
     end
     rpta

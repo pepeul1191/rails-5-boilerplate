@@ -3,15 +3,15 @@ module LoginHelper
     rpta = nil
     if CONSTANTS[:ambiente] == 'desarrollo'
       rpta = [
-        'bower_components/bootstrap/dist/css/bootstrap.min',
-        'bower_components/font-awesome/css/font-awesome.min',
-        'bower_components/swp-backbone/assets/css/constants',
-        'bower_components/swp-backbone/assets/css/login',
-        'assets/css/login',
+        CONSTANTS[:BASE_URL] + 'bower_components/bootstrap/dist/css/bootstrap.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/font-awesome/css/font-awesome.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/swp-backbone/assets/css/constants',
+        CONSTANTS[:BASE_URL] + 'bower_components/swp-backbone/assets/css/login',
+        CONSTANTS[:BASE_URL] + 'assets/css/login',
       ]
     else
       rpta = [
-        'dist/login.min',
+        CONSTANTS[:BASE_URL] + 'dist/login.min',
       ]
     end
     rpta
@@ -21,12 +21,12 @@ module LoginHelper
     rpta = nil
     if CONSTANTS[:ambiente] == 'desarrollo'
       rpta = [
-        'bower_components/jquery/dist/jquery.min',
-        'bower_components/bootstrap/dist/js/bootstrap.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/jquery/dist/jquery.min',
+        CONSTANTS[:BASE_URL] + 'bower_components/bootstrap/dist/js/bootstrap.min',
       ]
     else
       rpta = [
-        'dist/login.min',
+        CONSTANTS[:BASE_URL] + 'dist/login.min',
       ]
     end
     rpta
