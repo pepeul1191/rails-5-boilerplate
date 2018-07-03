@@ -82,12 +82,12 @@ class Accesos::UsuarioController < ApplicationController
     render :plain => rpta, :status => status
   end
 
-  def nombre_repetido
+  def correo_repetido
     rpta = nil
     status = 200
     begin
       r = HTTParty.post(
-        CONSTANTS[:servicios][:accesos][:url] + 'usuario/nombre_repetido',
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/correo_repetido',
         headers:{
           CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
           'Content-Type' => 'application/x-www-form-urlencoded',
@@ -102,7 +102,7 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar validar el nombre de usuario del servicio',
+					'Se ha producido un error realizar validar el correo de usuario del servicio',
 					e.message
 				]
 			}.to_json
