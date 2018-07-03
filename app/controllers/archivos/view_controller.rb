@@ -5,55 +5,8 @@ class Archivos::ViewController < ApplicationController
       :title => 'Archivos',
       :css => ArchivosHelper::index_css,
       :js => ArchivosHelper::index_js,
-      :modulos => [
-        {
-          :url => 'accesos/',
-          :nombre => 'Accesos',
-        },
-        {
-          :url => 'maestros/',
-          :nombre => 'Maestros',
-        },
-        {
-          :url => 'archivos/',
-          :nombre => 'Archivos',
-        },
-      ].to_json,
-  		:items => [
-        {
-          :subtitulo => 'Opciones',
-          :items => [
-            {
-              :item => 'Gestión de Extensiones',
-              :url => 'archivos/#/extension',
-            },
-          ],
-        },{
-          :subtitulo => 'Tags',
-          :items => [
-            {
-              :item => 'Gestión de Autores',
-              :url => 'archivos/#/autor',
-            },
-            {
-              :item => 'Gestión de Categorías',
-              :url => 'archivos/#/categoria',
-            },
-          ],
-        },{
-          :subtitulo => 'Archivos',
-          :items => [
-            {
-              :item => 'Gestión de Libros',
-              :url => 'archivos/#/libro',
-            },
-            {
-              :item => 'Gestión de Videos',
-              :url => 'archivos/#/video',
-            },
-          ],
-        }
-      ].to_json,
+      :modulos => MenuHelper::menu_modulos(),
+  		:items => MenuHelper::menu_items('Archivos'),
   		:js_bottom => 'dist/agricultores.min.js',
   		:data => {
   			:mensaje => false,
