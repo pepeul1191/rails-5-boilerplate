@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   post 'rol/guardar' => 'accesos/rol#guardar'
   get 'rol/permiso/listar/:sistema_id/:rol_id' => 'accesos/rol#listar_permiso'
   post 'rol/permiso/guardar' => 'accesos/rol#guardar_permiso'
+  get 'estado_usuario/listar' => 'accesos/estado_usuario#listar'
   get 'usuario/listar' => 'accesos/usuario#listar'
+  get 'usuario/obtener_usuario_correo/:usuario_id' => 'accesos/usuario#obtener_usuario_correo'
   # maestros/ubicaciones
   get 'maestros' => 'ubicaciones/view#index'
   get 'ubicaciones/departamento/listar' => 'ubicaciones/departamento#listar'
