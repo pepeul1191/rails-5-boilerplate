@@ -110,4 +110,33 @@ class Accesos::UsuarioController < ApplicationController
 		end
     render :plain => rpta, :status => status
   end
+
+  def guardar_usuario_correo
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.post(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/guardar_usuario_correo',
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        body:{
+          :usuario => params[:usuario],
+        })
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error realizar guardar de usuario del servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
 end
