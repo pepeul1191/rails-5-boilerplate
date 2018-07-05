@@ -17,8 +17,8 @@ class Accesos::EstadoUsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de usuarios del servicio',
-					e.message
+					'No se pudo obtener la lista de estados de usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500

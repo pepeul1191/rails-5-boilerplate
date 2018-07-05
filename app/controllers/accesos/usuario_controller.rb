@@ -17,8 +17,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de usuarios del servicio',
-					e.message
+					'No se pudo obtener la lista de usuarios',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -44,8 +44,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el usuario del servicio',
-					e.message
+					'No se pudo obtener los datos generales del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -73,8 +73,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar validar la contrasenia repetida del servicio',
-					e.message
+					'No se pudo validar la contraseña del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -102,8 +102,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar validar el correo de usuario del servicio',
-					e.message
+					'No se pudo validar el correo del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -131,8 +131,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar guardar de usuario del servicio',
-					e.message
+					'No se ha podido grabar los cambios de usuario y correo',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -160,8 +160,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar validar el correo de usuario del servicio',
-					e.message
+					'No se pudo validar el nombre del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -189,8 +189,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
-					e.message
+					'No se ha podido grabar los cambios de contraseña',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -216,8 +216,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el usuario del servicio',
-					e.message
+					'No se pudo obtener la lista de sistemas del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -245,8 +245,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
-					e.message
+					'No se ha podido grabar los cambios de los sistemas del usuario',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -272,8 +272,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de permisos del rol del servicio',
-					e.message
+					'No se pudo obtener la lista de roles del usuario/sistema',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -301,8 +301,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
-					e.message
+					'No se ha podido grabar los cambios de los roles del usuario/sistema',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -328,8 +328,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de permisos del rol del servicio',
-					e.message
+					'No se pudo obtener la lista de permisos del usuario/sistema',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -357,8 +357,8 @@ class Accesos::UsuarioController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
-					e.message
+					'No se ha podido grabar los cambios de los permisos del usuario/sistema',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500

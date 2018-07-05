@@ -17,8 +17,8 @@ class Accesos::ModuloController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de modulos del servicio',
-					e.message
+					'No se pudo obtener la lista de módulos del sistema',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -46,8 +46,8 @@ class Accesos::ModuloController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar los cambios de módulos del servicio',
-					e.message
+					'No se ha podido grabar los cambios de los módulos',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500

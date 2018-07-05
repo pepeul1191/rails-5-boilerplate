@@ -17,8 +17,8 @@ class Accesos::SubtituloController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error obtener el listado de subtitulos del servicio',
-					e.message
+					'No se pudo obtener la lista de subtítulos del módulo',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
@@ -46,8 +46,8 @@ class Accesos::SubtituloController < ApplicationController
       rpta = {
 				:tipo_mensaje => 'error',
 				:mensaje => [
-					'Se ha producido un error realizar los cambios de subtitulos del servicio',
-					e.message
+					'No se ha podido grabar los cambios de los subtítulos',
+					'Se ha producido un error de comunicación con el servicio de accesos'
 				]
 			}.to_json
 			status = 500
