@@ -253,4 +253,116 @@ class Accesos::UsuarioController < ApplicationController
 		end
     render :plain => rpta, :status => status
   end
+
+  def rol_listar
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.get(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/rol/' + params[:sistema_id] + '/' + params[:usuario_id],
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        query:{})
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error obtener el listado de permisos del rol del servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
+
+  def guardar_rol
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.post(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/rol/guardar',
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        body:{
+          :data => params[:data],
+        })
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
+
+  def permiso_listar
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.get(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/permiso/' + params[:sistema_id] + '/' + params[:usuario_id],
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        query:{})
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error obtener el listado de permisos del rol del servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
+
+  def guardar_permiso
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.post(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/permiso/guardar',
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        body:{
+          :data => params[:data],
+        })
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
 end
