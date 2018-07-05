@@ -224,4 +224,33 @@ class Accesos::UsuarioController < ApplicationController
 		end
     render :plain => rpta, :status => status
   end
+
+  def guardar_sistema
+    rpta = nil
+    status = 200
+    begin
+      r = HTTParty.post(
+        CONSTANTS[:servicios][:accesos][:url] + 'usuario/sistema/guardar',
+        headers:{
+          CONSTANTS[:servicios][:accesos][:csrf_key] => CONSTANTS[:servicios][:accesos][:csrf_value],
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'charset' => 'utf-8'
+        },
+        body:{
+          :data => params[:data],
+        })
+      status = r.code
+      rpta = r.body
+		rescue Exception => e
+      rpta = {
+				:tipo_mensaje => 'error',
+				:mensaje => [
+					'Se ha producido un error actualizar la contraseña del usuario con el servicio',
+					e.message
+				]
+			}.to_json
+			status = 500
+		end
+    render :plain => rpta, :status => status
+  end
 end
