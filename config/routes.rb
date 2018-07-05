@@ -31,8 +31,8 @@ Rails.application.routes.draw do
 	post 'usuario/correo_repetido' => 'accesos/usuario#correo_repetido'
 	post 'usuario/guardar_usuario_correo' => 'accesos/usuario#guardar_usuario_correo'
 	post 'usuario/guardar_contrasenia' => 'accesos/usuario#guardar_contrasenia'
-
 	get 'usuario/sistema/:usuario_id' => 'accesos/usuario#listar_sistema'
+  
 	post 'usuario/sistema/guardar' => 'accesos/usuario#guardar_sistema'
 	get 'usuario/rol/:sistema_id/:usuario_id' => 'accesos/usuario#rol_listar'
 	post 'usuario/rol/guardar' => 'accesos/usuario#guardar_rol'
